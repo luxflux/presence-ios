@@ -12,13 +12,14 @@
 
 @interface ViewController : UIViewController {
     IBOutlet UILabel *topText;
-    IBOutlet UIButton *startStopButton;
+    IBOutlet UIButton *startButton;
+    IBOutlet UIButton *stopButton;
         
     NSString *api_url;
     NSString *api_key;
-    Timer *timer;
 }
 
-- (IBAction)buttonPressed;
+- (IBAction)startButtonPressed;
+- (IBAction)stopButtonPressed;
 
 @end

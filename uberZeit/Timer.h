@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSDate* start;
 @property (nonatomic, strong) NSDate* end;
 @property (nonatomic, strong) NSString* duration;
-@property (nonatomic) BOOL* running;
+@property (nonatomic) BOOL running;
 
 @end
 
