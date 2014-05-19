@@ -58,7 +58,7 @@
     
     // Create a mutable copy of the immutable request and add more headers
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
-    [mutableRequest addValue:api_key forHTTPHeaderField:@"X-Auth-Token"];
+    [mutableRequest setValue:api_key forHTTPHeaderField:@"X-Auth-Token"];
     
     // Now set our request variable with an (immutable) copy of the altered request
     request = [mutableRequest copy];
@@ -106,8 +106,15 @@
             self.timer = [[Timer alloc] init];
             self.timer.time_type_id = [res objectForKey:@"time_type_id"];
             self.timer.start = [uberZeitDateFormatter dateFromString:start];
+            self.timer.end = [res objectForKey:@"end"];
             self.timer.duration = [res objectForKey:@"duration"];
-            self.timer.running = YES;
+            
+            if([self.timer.end isKindOfClass:[NSNull class]]) {
+                self.timer.running = YES;
+            } else {
+                NSLog(@"Time not running...? %@", self.timer.end);
+                self.timer.running = NO;
+            }
             
             [self handleTimerUpdate];
             break;
@@ -123,15 +130,59 @@
             [self handleTimerUpdate];
             break;
         }
+        case 422: {
+            NSError *myError = nil;
+            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+            
+            NSLog(@"%@", [res objectForKey:@"errors"]);
+        }
+        default: {
+            NSLog(@"%d", self.responseCode);
+        }
     }
     
 }
 
-- (IBAction)startButtonPressed {
-    NSLog(@"Start pressed!");
+- (IBAction)startStopButtonPressed {
+    NSLog(@"Button pressed");
+    if(self.timer.running) {
+        NSLog(@"Stopping timer");
+        [self stopTimer];
+    } else {
+        NSLog(@"Starting timer");
+    }
 }
-- (IBAction)stopButtonPressed {
-    NSLog(@"Stop pressed!");
+
+- (void)stopTimer {
+    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", api_url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:timer_url]];
+    
+    [request setValue:api_key forHTTPHeaderField:@"X-Auth-Token"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
+    // Specify that it will be a POST request
+    request.HTTPMethod = @"PUT";
+    
+    // Convert your data and set your request's HTTPBody property
+    NSMutableDictionary *timerDictionary = [NSMutableDictionary dictionaryWithCapacity:1];
+    [timerDictionary setObject:@"now" forKey:@"end"];
+    
+    NSError *jsonSerializationError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:timerDictionary options:NSJSONWritingPrettyPrinted error:&jsonSerializationError];
+    
+    if(!jsonSerializationError) {
+        NSString *serJSON = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"Serialized JSON: %@", serJSON);
+    } else {
+        NSLog(@"JSON Encoding Failed: %@", [jsonSerializationError localizedDescription]);
+    }
+    
+    [request setHTTPBody: jsonData];
+    
+    // Create url connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
 }
 
 - (void)handleTimerUpdate {
