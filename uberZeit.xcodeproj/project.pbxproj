@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		054ECEFD192A4A9000548992 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 054ECEFC192A4A9000548992 /* Timer.m */; };
 		05BBF428192A068A00C6B074 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05BBF427192A068A00C6B074 /* Settings.bundle */; };
 		05DE1F99192A05EC0064E08D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F98192A05EC0064E08D /* Foundation.framework */; };
 		05DE1F9B192A05EC0064E08D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */; };
@@ -22,6 +23,7 @@
 		05DE1FBA192A05EC0064E08D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F9C192A05EC0064E08D /* UIKit.framework */; };
 		05DE1FC2192A05EC0064E08D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05DE1FC0192A05EC0064E08D /* InfoPlist.strings */; };
 		05DE1FC4192A05EC0064E08D /* uberZeitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FC3192A05EC0064E08D /* uberZeitTests.m */; };
+		A235C39A8D50467D840D8052 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 785BDB3618084EC2BB2AFCB2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		054ECEFB192A4A9000548992 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		054ECEFC192A4A9000548992 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		05BBF427192A068A00C6B074 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		05DE1F95192A05EC0064E08D /* uberZeit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberZeit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DE1F98192A05EC0064E08D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,6 +59,8 @@
 		05DE1FBF192A05EC0064E08D /* uberZeitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "uberZeitTests-Info.plist"; sourceTree = "<group>"; };
 		05DE1FC1192A05EC0064E08D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05DE1FC3192A05EC0064E08D /* uberZeitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uberZeitTests.m; sourceTree = "<group>"; };
+		785BDB3618084EC2BB2AFCB2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E40CFC9AF0214281851F51D0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 				05DE1F9B192A05EC0064E08D /* CoreGraphics.framework in Frameworks */,
 				05DE1F9D192A05EC0064E08D /* UIKit.framework in Frameworks */,
 				05DE1F99192A05EC0064E08D /* Foundation.framework in Frameworks */,
+				A235C39A8D50467D840D8052 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +95,7 @@
 				05DE1FBD192A05EC0064E08D /* uberZeitTests */,
 				05DE1F97192A05EC0064E08D /* Frameworks */,
 				05DE1F96192A05EC0064E08D /* Products */,
+				E40CFC9AF0214281851F51D0 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +115,7 @@
 				05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */,
 				05DE1F9C192A05EC0064E08D /* UIKit.framework */,
 				05DE1FB7192A05EC0064E08D /* XCTest.framework */,
+				785BDB3618084EC2BB2AFCB2 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,6 +131,8 @@
 				05DE1FAE192A05EC0064E08D /* ViewController.m */,
 				05DE1FB0192A05EC0064E08D /* Images.xcassets */,
 				05DE1F9F192A05EC0064E08D /* Supporting Files */,
+				054ECEFB192A4A9000548992 /* Timer.h */,
+				054ECEFC192A4A9000548992 /* Timer.m */,
 			);
 			path = uberZeit;
 			sourceTree = "<group>";
@@ -162,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05DE1FC7192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeit" */;
 			buildPhases = (
+				27C5D6B9423D408DA080ED60 /* Check Pods Manifest.lock */,
 				05DE1F91192A05EC0064E08D /* Sources */,
 				05DE1F92192A05EC0064E08D /* Frameworks */,
 				05DE1F93192A05EC0064E08D /* Resources */,
+				30ECBFDC17F14D01A6F888C1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,6 +261,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		27C5D6B9423D408DA080ED60 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		30ECBFDC17F14D01A6F888C1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		05DE1F91192A05EC0064E08D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -256,6 +302,7 @@
 				05DE1FAF192A05EC0064E08D /* ViewController.m in Sources */,
 				05DE1FA9192A05EC0064E08D /* AppDelegate.m in Sources */,
 				05DE1FA5192A05EC0064E08D /* main.m in Sources */,
+				054ECEFD192A4A9000548992 /* Timer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +424,7 @@
 		};
 		05DE1FC8192A05EC0064E08D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E40CFC9AF0214281851F51D0 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -390,6 +438,7 @@
 		};
 		05DE1FC9192A05EC0064E08D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E40CFC9AF0214281851F51D0 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

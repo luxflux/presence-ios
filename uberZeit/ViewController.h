@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Timer.h"
+
 
 @interface ViewController : UIViewController {
     IBOutlet UILabel *topText;
@@ -14,6 +16,7 @@
         
     NSString *api_url;
     NSString *api_key;
+    Timer *timer;
 }
 
 - (IBAction)buttonPressed;
