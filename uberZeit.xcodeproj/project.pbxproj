@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05BBF428192A068A00C6B074 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05BBF427192A068A00C6B074 /* Settings.bundle */; };
+		05DE1F99192A05EC0064E08D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F98192A05EC0064E08D /* Foundation.framework */; };
+		05DE1F9B192A05EC0064E08D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */; };
+		05DE1F9D192A05EC0064E08D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F9C192A05EC0064E08D /* UIKit.framework */; };
+		05DE1FA3192A05EC0064E08D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05DE1FA1192A05EC0064E08D /* InfoPlist.strings */; };
+		05DE1FA5192A05EC0064E08D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FA4192A05EC0064E08D /* main.m */; };
+		05DE1FA9192A05EC0064E08D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FA8192A05EC0064E08D /* AppDelegate.m */; };
+		05DE1FAC192A05EC0064E08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05DE1FAA192A05EC0064E08D /* Main.storyboard */; };
+		05DE1FAF192A05EC0064E08D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FAE192A05EC0064E08D /* ViewController.m */; };
+		05DE1FB1192A05EC0064E08D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05DE1FB0192A05EC0064E08D /* Images.xcassets */; };
+		05DE1FB8192A05EC0064E08D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1FB7192A05EC0064E08D /* XCTest.framework */; };
+		05DE1FB9192A05EC0064E08D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F98192A05EC0064E08D /* Foundation.framework */; };
+		05DE1FBA192A05EC0064E08D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F9C192A05EC0064E08D /* UIKit.framework */; };
+		05DE1FC2192A05EC0064E08D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05DE1FC0192A05EC0064E08D /* InfoPlist.strings */; };
+		05DE1FC4192A05EC0064E08D /* uberZeitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FC3192A05EC0064E08D /* uberZeitTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		05DE1FBB192A05EC0064E08D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05DE1F8D192A05EC0064E08D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05DE1F94192A05EC0064E08D;
+			remoteInfo = uberZeit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05BBF427192A068A00C6B074 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		05DE1F95192A05EC0064E08D /* uberZeit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberZeit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05DE1F98192A05EC0064E08D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		05DE1F9C192A05EC0064E08D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		05DE1FA0192A05EC0064E08D /* uberZeit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "uberZeit-Info.plist"; sourceTree = "<group>"; };
+		05DE1FA2192A05EC0064E08D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		05DE1FA4192A05EC0064E08D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		05DE1FA6192A05EC0064E08D /* uberZeit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uberZeit-Prefix.pch"; sourceTree = "<group>"; };
+		05DE1FA7192A05EC0064E08D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		05DE1FA8192A05EC0064E08D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		05DE1FAB192A05EC0064E08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		05DE1FAD192A05EC0064E08D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		05DE1FAE192A05EC0064E08D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		05DE1FB0192A05EC0064E08D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		05DE1FB6192A05EC0064E08D /* uberZeitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uberZeitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		05DE1FB7192A05EC0064E08D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		05DE1FBF192A05EC0064E08D /* uberZeitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "uberZeitTests-Info.plist"; sourceTree = "<group>"; };
+		05DE1FC1192A05EC0064E08D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		05DE1FC3192A05EC0064E08D /* uberZeitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uberZeitTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05DE1F92192A05EC0064E08D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05DE1F9B192A05EC0064E08D /* CoreGraphics.framework in Frameworks */,
+				05DE1F9D192A05EC0064E08D /* UIKit.framework in Frameworks */,
+				05DE1F99192A05EC0064E08D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05DE1FB3192A05EC0064E08D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05DE1FB8192A05EC0064E08D /* XCTest.framework in Frameworks */,
+				05DE1FBA192A05EC0064E08D /* UIKit.framework in Frameworks */,
+				05DE1FB9192A05EC0064E08D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05DE1F8C192A05EC0064E08D = {
+			isa = PBXGroup;
+			children = (
+				05DE1F9E192A05EC0064E08D /* uberZeit */,
+				05DE1FBD192A05EC0064E08D /* uberZeitTests */,
+				05DE1F97192A05EC0064E08D /* Frameworks */,
+				05DE1F96192A05EC0064E08D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05DE1F96192A05EC0064E08D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05DE1F95192A05EC0064E08D /* uberZeit.app */,
+				05DE1FB6192A05EC0064E08D /* uberZeitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05DE1F97192A05EC0064E08D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05DE1F98192A05EC0064E08D /* Foundation.framework */,
+				05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */,
+				05DE1F9C192A05EC0064E08D /* UIKit.framework */,
+				05DE1FB7192A05EC0064E08D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		05DE1F9E192A05EC0064E08D /* uberZeit */ = {
+			isa = PBXGroup;
+			children = (
+				05DE1FA7192A05EC0064E08D /* AppDelegate.h */,
+				05DE1FA8192A05EC0064E08D /* AppDelegate.m */,
+				05DE1FAA192A05EC0064E08D /* Main.storyboard */,
+				05BBF427192A068A00C6B074 /* Settings.bundle */,
+				05DE1FAD192A05EC0064E08D /* ViewController.h */,
+				05DE1FAE192A05EC0064E08D /* ViewController.m */,
+				05DE1FB0192A05EC0064E08D /* Images.xcassets */,
+				05DE1F9F192A05EC0064E08D /* Supporting Files */,
+			);
+			path = uberZeit;
+			sourceTree = "<group>";
+		};
+		05DE1F9F192A05EC0064E08D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05DE1FA0192A05EC0064E08D /* uberZeit-Info.plist */,
+				05DE1FA1192A05EC0064E08D /* InfoPlist.strings */,
+				05DE1FA4192A05EC0064E08D /* main.m */,
+				05DE1FA6192A05EC0064E08D /* uberZeit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		05DE1FBD192A05EC0064E08D /* uberZeitTests */ = {
+			isa = PBXGroup;
+			children = (
+				05DE1FC3192A05EC0064E08D /* uberZeitTests.m */,
+				05DE1FBE192A05EC0064E08D /* Supporting Files */,
+			);
+			path = uberZeitTests;
+			sourceTree = "<group>";
+		};
+		05DE1FBE192A05EC0064E08D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05DE1FBF192A05EC0064E08D /* uberZeitTests-Info.plist */,
+				05DE1FC0192A05EC0064E08D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05DE1F94192A05EC0064E08D /* uberZeit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05DE1FC7192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeit" */;
+			buildPhases = (
+				05DE1F91192A05EC0064E08D /* Sources */,
+				05DE1F92192A05EC0064E08D /* Frameworks */,
+				05DE1F93192A05EC0064E08D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = uberZeit;
+			productName = uberZeit;
+			productReference = 05DE1F95192A05EC0064E08D /* uberZeit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		05DE1FB5192A05EC0064E08D /* uberZeitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05DE1FCA192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeitTests" */;
+			buildPhases = (
+				05DE1FB2192A05EC0064E08D /* Sources */,
+				05DE1FB3192A05EC0064E08D /* Frameworks */,
+				05DE1FB4192A05EC0064E08D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05DE1FBC192A05EC0064E08D /* PBXTargetDependency */,
+			);
+			name = uberZeitTests;
+			productName = uberZeitTests;
+			productReference = 05DE1FB6192A05EC0064E08D /* uberZeitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05DE1F8D192A05EC0064E08D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = raffaelschmid;
+				TargetAttributes = {
+					05DE1FB5192A05EC0064E08D = {
+						TestTargetID = 05DE1F94192A05EC0064E08D;
+					};
+				};
+			};
+			buildConfigurationList = 05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "uberZeit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 05DE1F8C192A05EC0064E08D;
+			productRefGroup = 05DE1F96192A05EC0064E08D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05DE1F94192A05EC0064E08D /* uberZeit */,
+				05DE1FB5192A05EC0064E08D /* uberZeitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05DE1F93192A05EC0064E08D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05BBF428192A068A00C6B074 /* Settings.bundle in Resources */,
+				05DE1FB1192A05EC0064E08D /* Images.xcassets in Resources */,
+				05DE1FA3192A05EC0064E08D /* InfoPlist.strings in Resources */,
+				05DE1FAC192A05EC0064E08D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05DE1FB4192A05EC0064E08D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05DE1FC2192A05EC0064E08D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05DE1F91192A05EC0064E08D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05DE1FAF192A05EC0064E08D /* ViewController.m in Sources */,
+				05DE1FA9192A05EC0064E08D /* AppDelegate.m in Sources */,
+				05DE1FA5192A05EC0064E08D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05DE1FB2192A05EC0064E08D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05DE1FC4192A05EC0064E08D /* uberZeitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05DE1FBC192A05EC0064E08D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05DE1F94192A05EC0064E08D /* uberZeit */;
+			targetProxy = 05DE1FBB192A05EC0064E08D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		05DE1FA1192A05EC0064E08D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05DE1FA2192A05EC0064E08D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		05DE1FAA192A05EC0064E08D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05DE1FAB192A05EC0064E08D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		05DE1FC0192A05EC0064E08D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05DE1FC1192A05EC0064E08D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		05DE1FC5192A05EC0064E08D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		05DE1FC6192A05EC0064E08D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		05DE1FC8192A05EC0064E08D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "uberZeit/uberZeit-Prefix.pch";
+				INFOPLIST_FILE = "uberZeit/uberZeit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		05DE1FC9192A05EC0064E08D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "uberZeit/uberZeit-Prefix.pch";
+				INFOPLIST_FILE = "uberZeit/uberZeit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		05DE1FCB192A05EC0064E08D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/uberZeit.app/uberZeit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "uberZeit/uberZeit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "uberZeitTests/uberZeitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		05DE1FCC192A05EC0064E08D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/uberZeit.app/uberZeit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "uberZeit/uberZeit-Prefix.pch";
+				INFOPLIST_FILE = "uberZeitTests/uberZeitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "uberZeit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05DE1FC5192A05EC0064E08D /* Debug */,
+				05DE1FC6192A05EC0064E08D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05DE1FC7192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05DE1FC8192A05EC0064E08D /* Debug */,
+				05DE1FC9192A05EC0064E08D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05DE1FCA192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05DE1FCB192A05EC0064E08D /* Debug */,
+				05DE1FCC192A05EC0064E08D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05DE1F8D192A05EC0064E08D /* Project object */;
+}
