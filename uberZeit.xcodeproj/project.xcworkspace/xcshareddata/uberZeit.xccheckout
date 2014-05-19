@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>90EF2136-647B-4428-BF22-812D221D7DD9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>uberZeit</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>344F2DFE-856C-4BDC-89A3-EF4C96D4E3EE</key>
+		<string>ssh://github.com/luxflux/uberzeit-iPhone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>uberZeit.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>344F2DFE-856C-4BDC-89A3-EF4C96D4E3EE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/luxflux/uberzeit-iPhone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>344F2DFE-856C-4BDC-89A3-EF4C96D4E3EE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>344F2DFE-856C-4BDC-89A3-EF4C96D4E3EE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>uberzeit-iPhone</string>
+		</dict>
+	</array>
+</dict>
+</plist>
