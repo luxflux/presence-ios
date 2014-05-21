@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UBZSettingsViewController : UIViewController
+@interface UBZSettingsViewController : UITableViewController
 
 @end
