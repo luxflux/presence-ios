@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 raffaelschmid. All rights reserved.
 //
 
-#import "UBZSettings.h"
+#import "UBZSettingsViewController.h"
 
-@interface UBZSettings ()
+@interface UBZSettingsViewController ()
 
 @end
 
-@implementation UBZSettings
+@implementation UBZSettingsViewController
 
 - (void)viewDidLoad
 {
