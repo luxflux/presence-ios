@@ -11,7 +11,6 @@
 		052064D0192D4E9F004F7DAB /* UYLPasswordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 052064CF192D4E9F004F7DAB /* UYLPasswordManager.m */; };
 		054ECEFD192A4A9000548992 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 054ECEFC192A4A9000548992 /* Timer.m */; };
 		05575FDE192C85500041D19A /* UBZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05575FDD192C85500041D19A /* UBZSettingsViewController.m */; };
-		05BBF428192A068A00C6B074 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05BBF427192A068A00C6B074 /* Settings.bundle */; };
 		05DE1F99192A05EC0064E08D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F98192A05EC0064E08D /* Foundation.framework */; };
 		05DE1F9B192A05EC0064E08D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */; };
 		05DE1F9D192A05EC0064E08D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F9C192A05EC0064E08D /* UIKit.framework */; };
@@ -46,7 +45,6 @@
 		054ECEFC192A4A9000548992 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		05575FDC192C85500041D19A /* UBZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBZSettingsViewController.h; sourceTree = "<group>"; };
 		05575FDD192C85500041D19A /* UBZSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBZSettingsViewController.m; sourceTree = "<group>"; };
-		05BBF427192A068A00C6B074 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		05DE1F95192A05EC0064E08D /* uberZeit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberZeit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DE1F98192A05EC0064E08D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,7 +128,6 @@
 				05DE1FA7192A05EC0064E08D /* AppDelegate.h */,
 				05DE1FA8192A05EC0064E08D /* AppDelegate.m */,
 				05DE1FAA192A05EC0064E08D /* Main.storyboard */,
-				05BBF427192A068A00C6B074 /* Settings.bundle */,
 				05DE1FAD192A05EC0064E08D /* UBZTimerViewController.h */,
 				05DE1FAE192A05EC0064E08D /* UBZTimerViewController.m */,
 				05DE1FB0192A05EC0064E08D /* Images.xcassets */,
@@ -250,7 +247,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05BBF428192A068A00C6B074 /* Settings.bundle in Resources */,
 				05DE1FB1192A05EC0064E08D /* Images.xcassets in Resources */,
 				05DE1FA3192A05EC0064E08D /* InfoPlist.strings in Resources */,
 				05DE1FAC192A05EC0064E08D /* Main.storyboard in Resources */,

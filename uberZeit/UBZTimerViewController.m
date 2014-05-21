@@ -8,6 +8,7 @@
 
 #import "UBZTimerViewController.h"
 #import "Timer.h"
+#import "UYLPasswordManager.h"
 
 
 @interface UBZTimerViewController ()
@@ -20,6 +21,7 @@
 
 @property (nonatomic, weak) NSString *api_url;
 @property (nonatomic, weak) NSString *api_key;
+@property (nonatomic, weak) UYLPasswordManager *keychain;
 
 @end
 
@@ -58,6 +60,10 @@
 }
 
 - (void)loadCurrentTimer {
+    
+    if([self.api_url length ] == 0 || [self.api_key length ] == 0) {
+        return;
+    }
     
     NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", self.api_url];
     NSURLRequest *request = [NSURLRequest requestWithURL:
@@ -207,11 +213,8 @@
 }
 
 - (void)reloadPreferences {
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    self.api_url = [standardUserDefaults objectForKey:@"api_url_preference"];
-    self.api_key = [standardUserDefaults objectForKey:@"api_key_preference"];
+    self.api_url = [self.keychain keyForIdentifier:@"api_url"];
+    self.api_key = [self.keychain keyForIdentifier:@"api_key"];
     NSLog(@"URL: %@", self.api_url);
     NSLog(@"Key: %@", self.api_key);
 }
@@ -219,7 +222,7 @@
 
 - (void)handlePreferences {
     if([self.api_url length ] == 0 || [self.api_key length ] == 0) {
-        self.topText.text = @"No API endpoint or key specified. Please configure them via system settings.";
+        self.topText.text = @"No API endpoint or key specified. Please configure them in your settings.";
         self.topText.hidden = false;
         self.startStopButton.hidden = true;
     } else {
