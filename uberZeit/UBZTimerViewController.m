@@ -14,6 +14,13 @@
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic) NSInteger responseCode;
 @property (nonatomic) Timer *timer;
+
+@property (nonatomic, weak) IBOutlet UILabel *topText;
+@property (nonatomic, weak) IBOutlet UIButton *startStopButton;
+
+@property (nonatomic, weak) NSString *api_url;
+@property (nonatomic, weak) NSString *api_key;
+
 @end
 
 @implementation UBZTimerViewController
@@ -52,13 +59,13 @@
 
 - (void)loadCurrentTimer {
     
-    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", api_url];
+    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", self.api_url];
     NSURLRequest *request = [NSURLRequest requestWithURL:
                              [NSURL URLWithString:timer_url]];
     
     // Create a mutable copy of the immutable request and add more headers
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
-    [mutableRequest setValue:api_key forHTTPHeaderField:@"X-Auth-Token"];
+    [mutableRequest setValue:self.api_key forHTTPHeaderField:@"X-Auth-Token"];
     
     // Now set our request variable with an (immutable) copy of the altered request
     request = [mutableRequest copy];
@@ -154,11 +161,11 @@
 }
 
 - (void)stopTimer {
-    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", api_url];
+    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", self.api_url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:timer_url]];
     
-    [request setValue:api_key forHTTPHeaderField:@"X-Auth-Token"];
+    [request setValue:self.api_key forHTTPHeaderField:@"X-Auth-Token"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
     // Specify that it will be a POST request
@@ -195,29 +202,29 @@
     }
 }
 - (void)updateDuration {
-    topText.text = self.timer.duration;
-    topText.hidden = false;
+    self.topText.text = self.timer.duration;
+    self.topText.hidden = false;
 }
 
 - (void)reloadPreferences {
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    api_url = [standardUserDefaults objectForKey:@"api_url_preference"];
-    api_key = [standardUserDefaults objectForKey:@"api_key_preference"];
-    NSLog(@"URL: %@", api_url);
-    NSLog(@"Key: %@", api_key);
+    self.api_url = [standardUserDefaults objectForKey:@"api_url_preference"];
+    self.api_key = [standardUserDefaults objectForKey:@"api_key_preference"];
+    NSLog(@"URL: %@", self.api_url);
+    NSLog(@"Key: %@", self.api_key);
 }
 
 
 - (void)handlePreferences {
-    if([api_url length ] == 0 || [api_key length ] == 0) {
-        topText.text = @"No API endpoint or key specified. Please configure them via system settings.";
-        topText.hidden = false;
-        startStopButton.hidden = true;
+    if([self.api_url length ] == 0 || [self.api_key length ] == 0) {
+        self.topText.text = @"No API endpoint or key specified. Please configure them via system settings.";
+        self.topText.hidden = false;
+        self.startStopButton.hidden = true;
     } else {
-        topText.hidden = true;
-        startStopButton.hidden = false;
+        self.topText.hidden = true;
+        self.startStopButton.hidden = false;
     }
 }
 

@@ -7,8 +7,13 @@
 //
 
 #import "UBZSettingsViewController.h"
+#import "UYLPasswordManager.h"
 
 @interface UBZSettingsViewController ()
+
+@property (nonatomic, weak) IBOutlet UITextField *apiURLField;
+@property (nonatomic, weak) IBOutlet UITextField *apiKeyField;
+@property (nonatomic, weak) UYLPasswordManager *keychain;
 
 @end
 
@@ -17,7 +22,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.keychain = [UYLPasswordManager sharedInstance];
+    
+    self.apiURLField.text = [self.keychain keyForIdentifier:@"api_url"];
+    self.apiKeyField.text = [self.keychain keyForIdentifier:@"api_key"];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    NSString *key;
+    if(textField == self.apiURLField) {
+        key = @"api_url";
+    } else if (textField == self.apiKeyField) {
+        key = @"api_key";
+    } else {
+        NSLog(@"w00t unknown field %@", textField);
+    }
+    
+    if(key) {
+        [self.keychain registerKey:textField.text forIdentifier:key];
+        NSLog(@"Wrote %@ for %@", textField.text, key);
+    }
 }
 
 - (void)didReceiveMemoryWarning

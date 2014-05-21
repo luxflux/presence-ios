@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052064CD192D4A75004F7DAB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 052064CC192D4A75004F7DAB /* Security.framework */; };
+		052064D0192D4E9F004F7DAB /* UYLPasswordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 052064CF192D4E9F004F7DAB /* UYLPasswordManager.m */; };
 		054ECEFD192A4A9000548992 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 054ECEFC192A4A9000548992 /* Timer.m */; };
 		05575FDE192C85500041D19A /* UBZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05575FDD192C85500041D19A /* UBZSettingsViewController.m */; };
 		05BBF428192A068A00C6B074 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05BBF427192A068A00C6B074 /* Settings.bundle */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		052064CC192D4A75004F7DAB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		052064CE192D4E9F004F7DAB /* UYLPasswordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UYLPasswordManager.h; sourceTree = "<group>"; };
+		052064CF192D4E9F004F7DAB /* UYLPasswordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UYLPasswordManager.m; sourceTree = "<group>"; };
 		054ECEFB192A4A9000548992 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		054ECEFC192A4A9000548992 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		05575FDC192C85500041D19A /* UBZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBZSettingsViewController.h; sourceTree = "<group>"; };
@@ -68,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052064CD192D4A75004F7DAB /* Security.framework in Frameworks */,
 				05DE1F9B192A05EC0064E08D /* CoreGraphics.framework in Frameworks */,
 				05DE1F9D192A05EC0064E08D /* UIKit.framework in Frameworks */,
 				05DE1F99192A05EC0064E08D /* Foundation.framework in Frameworks */,
@@ -109,6 +115,7 @@
 		05DE1F97192A05EC0064E08D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				052064CC192D4A75004F7DAB /* Security.framework */,
 				05DE1F98192A05EC0064E08D /* Foundation.framework */,
 				05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */,
 				05DE1F9C192A05EC0064E08D /* UIKit.framework */,
@@ -132,6 +139,8 @@
 				054ECEFC192A4A9000548992 /* Timer.m */,
 				05575FDC192C85500041D19A /* UBZSettingsViewController.h */,
 				05575FDD192C85500041D19A /* UBZSettingsViewController.m */,
+				052064CE192D4E9F004F7DAB /* UYLPasswordManager.h */,
+				052064CF192D4E9F004F7DAB /* UYLPasswordManager.m */,
 			);
 			path = uberZeit;
 			sourceTree = "<group>";
@@ -264,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05DE1FAF192A05EC0064E08D /* UBZTimerViewController.m in Sources */,
+				052064D0192D4E9F004F7DAB /* UYLPasswordManager.m in Sources */,
 				05575FDE192C85500041D19A /* UBZSettingsViewController.m in Sources */,
 				05DE1FA9192A05EC0064E08D /* AppDelegate.m in Sources */,
 				05DE1FA5192A05EC0064E08D /* main.m in Sources */,
