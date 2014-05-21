@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		054ECEFD192A4A9000548992 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 054ECEFC192A4A9000548992 /* Timer.m */; };
+		05575FDE192C85500041D19A /* UBZSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 05575FDD192C85500041D19A /* UBZSettings.m */; };
 		05BBF428192A068A00C6B074 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05BBF427192A068A00C6B074 /* Settings.bundle */; };
 		05DE1F99192A05EC0064E08D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F98192A05EC0064E08D /* Foundation.framework */; };
 		05DE1F9B192A05EC0064E08D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */; };
@@ -16,7 +17,7 @@
 		05DE1FA5192A05EC0064E08D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FA4192A05EC0064E08D /* main.m */; };
 		05DE1FA9192A05EC0064E08D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FA8192A05EC0064E08D /* AppDelegate.m */; };
 		05DE1FAC192A05EC0064E08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05DE1FAA192A05EC0064E08D /* Main.storyboard */; };
-		05DE1FAF192A05EC0064E08D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FAE192A05EC0064E08D /* ViewController.m */; };
+		05DE1FAF192A05EC0064E08D /* UBZTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DE1FAE192A05EC0064E08D /* UBZTimer.m */; };
 		05DE1FB1192A05EC0064E08D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05DE1FB0192A05EC0064E08D /* Images.xcassets */; };
 		05DE1FB8192A05EC0064E08D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1FB7192A05EC0064E08D /* XCTest.framework */; };
 		05DE1FB9192A05EC0064E08D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DE1F98192A05EC0064E08D /* Foundation.framework */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		054ECEFB192A4A9000548992 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		054ECEFC192A4A9000548992 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		05575FDC192C85500041D19A /* UBZSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBZSettings.h; sourceTree = "<group>"; };
+		05575FDD192C85500041D19A /* UBZSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBZSettings.m; sourceTree = "<group>"; };
 		05BBF427192A068A00C6B074 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		05DE1F95192A05EC0064E08D /* uberZeit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberZeit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DE1F98192A05EC0064E08D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -50,8 +53,8 @@
 		05DE1FA7192A05EC0064E08D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		05DE1FA8192A05EC0064E08D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		05DE1FAB192A05EC0064E08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		05DE1FAD192A05EC0064E08D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		05DE1FAE192A05EC0064E08D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		05DE1FAD192A05EC0064E08D /* UBZTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBZTimer.h; sourceTree = "<group>"; };
+		05DE1FAE192A05EC0064E08D /* UBZTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBZTimer.m; sourceTree = "<group>"; };
 		05DE1FB0192A05EC0064E08D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		05DE1FB6192A05EC0064E08D /* uberZeitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uberZeitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DE1FB7192A05EC0064E08D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -121,12 +124,14 @@
 				05DE1FA8192A05EC0064E08D /* AppDelegate.m */,
 				05DE1FAA192A05EC0064E08D /* Main.storyboard */,
 				05BBF427192A068A00C6B074 /* Settings.bundle */,
-				05DE1FAD192A05EC0064E08D /* ViewController.h */,
-				05DE1FAE192A05EC0064E08D /* ViewController.m */,
+				05DE1FAD192A05EC0064E08D /* UBZTimer.h */,
+				05DE1FAE192A05EC0064E08D /* UBZTimer.m */,
 				05DE1FB0192A05EC0064E08D /* Images.xcassets */,
 				05DE1F9F192A05EC0064E08D /* Supporting Files */,
 				054ECEFB192A4A9000548992 /* Timer.h */,
 				054ECEFC192A4A9000548992 /* Timer.m */,
+				05575FDC192C85500041D19A /* UBZSettings.h */,
+				05575FDD192C85500041D19A /* UBZSettings.m */,
 			);
 			path = uberZeit;
 			sourceTree = "<group>";
@@ -258,7 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05DE1FAF192A05EC0064E08D /* ViewController.m in Sources */,
+				05DE1FAF192A05EC0064E08D /* UBZTimer.m in Sources */,
+				05575FDE192C85500041D19A /* UBZSettings.m in Sources */,
 				05DE1FA9192A05EC0064E08D /* AppDelegate.m in Sources */,
 				05DE1FA5192A05EC0064E08D /* main.m in Sources */,
 				054ECEFD192A4A9000548992 /* Timer.m in Sources */,

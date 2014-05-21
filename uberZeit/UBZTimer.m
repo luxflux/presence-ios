@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 raffaelschmid. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "UBZTimer.h"
 #import "Timer.h"
 
 
-@interface ViewController ()
+@interface UBZTimer ()
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic) NSInteger responseCode;
 @property (nonatomic) Timer *timer;
 @end
 
-@implementation ViewController
+@implementation UBZTimer
 
 @synthesize responseData = _responseData;
 @synthesize responseCode = _responseCode;

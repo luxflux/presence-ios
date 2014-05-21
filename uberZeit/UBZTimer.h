@@ -10,7 +10,7 @@
 #import "Timer.h"
 
 
-@interface ViewController : UIViewController {
+@interface UBZTimer : UIViewController {
     IBOutlet UILabel *topText;
     IBOutlet UIButton *startStopButton;
         
