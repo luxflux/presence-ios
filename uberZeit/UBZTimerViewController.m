@@ -98,6 +98,7 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog(@"Connection failed: %@", [error description]);
+    [self presentTopText:error.localizedDescription asError:true];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -213,21 +214,56 @@
 }
 
 - (void)reloadPreferences {
+    
+    if(!self.keychain) {
+        self.keychain = [UYLPasswordManager sharedInstance];
+    }
+    
     self.api_url = [self.keychain keyForIdentifier:@"api_url"];
     self.api_key = [self.keychain keyForIdentifier:@"api_key"];
-    NSLog(@"URL: %@", self.api_url);
-    NSLog(@"Key: %@", self.api_key);
 }
 
 
 - (void)handlePreferences {
-    if([self.api_url length ] == 0 || [self.api_key length ] == 0) {
-        self.topText.text = @"No API endpoint or key specified. Please configure them in your settings.";
-        self.topText.hidden = false;
-        self.startStopButton.hidden = true;
+    NSString *error = [self errorFromPreferences];
+    if(error) {
+        [self presentTopText:error asError:FALSE];
     } else {
         self.topText.hidden = true;
         self.startStopButton.hidden = false;
+    }
+}
+
+- (void)presentTopText:(NSString *)text asError:(BOOL *)asError {
+    self.topText.hidden = false;
+    self.startStopButton.hidden = true;
+    
+    CGSize maximumLabelSize = CGSizeMake(296,9999);
+    CGSize expectedLabelSize = [text sizeWithFont:self.topText.font
+                                      constrainedToSize:maximumLabelSize
+                                          lineBreakMode:self.topText.lineBreakMode];
+    
+    CGRect newFrame = self.topText.frame;
+    newFrame.size.height = expectedLabelSize.height;
+    self.topText.frame = newFrame;
+
+    
+    if(asError) {
+        self.topText.backgroundColor = [UIColor redColor];
+        self.topText.textColor = [UIColor whiteColor];
+    } else {
+        self.topText.backgroundColor = Nil;
+        self.topText.textColor = Nil;
+
+    }
+}
+
+
+- (NSString *)errorFromPreferences {
+    if([self.api_url length ] == 0 || [self.api_key length ] == 0) {
+        return @"No API endpoint or key specified. Please configure them in your settings.";
+    } else {
+        return Nil;
     }
 }
 
@@ -236,5 +272,10 @@
     [self handlePreferences];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self reloadPreferences];
+    [self handlePreferences];
+    [self loadCurrentTimer];
+}
 
 @end
