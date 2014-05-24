@@ -340,7 +340,6 @@ static UYLPasswordManager *_sharedInstance = nil;
 }
 
 - (NSString *)keyForIdentifier:(NSString *)identifier inGroup:(NSString *)group {
-    NSLog(@"Called with %@ group %@", identifier, group);
     if (identifier) {
         self.keychainAccessGroup = group;
         self.keychainIdentifier = identifier;

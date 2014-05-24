@@ -76,34 +76,28 @@
     // Now set our request variable with an (immutable) copy of the altered request
     request = [mutableRequest copy];
     
-    NSLog(@"%@", request.allHTTPHeaderFields);
-    
     [NSURLConnection connectionWithRequest:request delegate:self];
     
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
-    NSLog(@"didReceiveResponse");
     self.responseData = [[NSMutableData alloc] init];
     [self.responseData setLength:0];
     self.responseCode = response.statusCode;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"didReceiveData");
-    NSLog(@"Received data %d",[data length]);
     [self.responseData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
     NSLog(@"Connection failed: %@", [error description]);
-    [self presentTopText:error.localizedDescription asError:true];
+    [self presentErrorText:error.localizedDescription];
+    self.startStopButton.hidden = true;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
-    NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
+    NSLog(@"Request succeeded! Received %d bytes of data",[self.responseData length]);
     
     switch(self.responseCode) {
         case 200: { // Timer running
@@ -126,7 +120,6 @@
             if([self.timer.end isKindOfClass:[NSNull class]]) {
                 self.timer.running = YES;
             } else {
-                NSLog(@"Time not running...? %@", self.timer.end);
                 self.timer.running = NO;
             }
             
@@ -144,11 +137,16 @@
             [self handleTimerUpdate];
             break;
         }
-        case 422: {
+        case 422: { // Validation failed
             NSError *myError = nil;
             NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
             
             NSLog(@"%@", [res objectForKey:@"errors"]);
+            break;
+        }
+        case 500: { // Server failed hard
+            NSLog(@"Server failed hard");
+            break;
         }
         default: {
             NSLog(@"%d", self.responseCode);
@@ -158,7 +156,6 @@
 }
 
 - (IBAction)startStopButtonPressed {
-    NSLog(@"Button pressed");
     if(self.timer.running) {
         NSLog(@"Stopping timer");
         [self stopTimer];
@@ -187,7 +184,6 @@
     
     if(!jsonSerializationError) {
         NSString *serJSON = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        NSLog(@"Serialized JSON: %@", serJSON);
     } else {
         NSLog(@"JSON Encoding Failed: %@", [jsonSerializationError localizedDescription]);
     }
@@ -209,8 +205,7 @@
     }
 }
 - (void)updateDuration {
-    self.topText.text = self.timer.duration;
-    self.topText.hidden = false;
+    //[self presentErrorText:self.timer.duration asError:NO];
 }
 
 - (void)reloadPreferences {
@@ -227,35 +222,19 @@
 - (void)handlePreferences {
     NSString *error = [self errorFromPreferences];
     if(error) {
-        [self presentTopText:error asError:FALSE];
+        [self presentErrorText:error];
+        self.startStopButton.hidden = false;
     } else {
         self.topText.hidden = true;
         self.startStopButton.hidden = false;
     }
 }
 
-- (void)presentTopText:(NSString *)text asError:(BOOL *)asError {
+- (void)presentErrorText:(NSString *)text {
+    self.topText.numberOfLines = 0;
+    self.topText.textColor = [UIColor redColor];
+    self.topText.text = text;
     self.topText.hidden = false;
-    self.startStopButton.hidden = true;
-    
-    CGSize maximumLabelSize = CGSizeMake(296,9999);
-    CGSize expectedLabelSize = [text sizeWithFont:self.topText.font
-                                      constrainedToSize:maximumLabelSize
-                                          lineBreakMode:self.topText.lineBreakMode];
-    
-    CGRect newFrame = self.topText.frame;
-    newFrame.size.height = expectedLabelSize.height;
-    self.topText.frame = newFrame;
-
-    
-    if(asError) {
-        self.topText.backgroundColor = [UIColor redColor];
-        self.topText.textColor = [UIColor whiteColor];
-    } else {
-        self.topText.backgroundColor = Nil;
-        self.topText.textColor = Nil;
-
-    }
 }
 
 
@@ -272,7 +251,7 @@
     [self handlePreferences];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [self reloadPreferences];
     [self handlePreferences];
     [self loadCurrentTimer];
