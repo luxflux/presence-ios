@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 raffaelschmid. All rights reserved.
 //
 
-#import "Timer.h"
+#import "UBZTimer.h"
 
-@implementation Timer
+@implementation UBZTimer
 
 @end

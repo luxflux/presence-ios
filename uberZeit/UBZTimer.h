@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Timer : NSObject
+@interface UBZTimer : NSObject
 
 @property (nonatomic, strong) NSNumber* time_type_id;
 @property (nonatomic, strong) NSDate* start;

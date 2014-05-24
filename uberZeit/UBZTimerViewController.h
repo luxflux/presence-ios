@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Timer.h"
+#import "UBZTimer.h"
 
 
 @interface UBZTimerViewController : UIViewController
 
 - (IBAction)startStopButtonPressed;
+- (void)timerLoadingFailed:(NSString *)error;
+- (void)timerLoadingCompleted:(UBZTimer *)timer;
 
 @end
