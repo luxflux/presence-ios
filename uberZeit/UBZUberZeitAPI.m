@@ -31,6 +31,7 @@
     self = [super init];
     self.callback_object = callback_object;
     
+    NSLog(@"Called with api_url %@", api_url);
     [self updateApiURL:api_url];
     [self updateApiKey:api_key];
     
@@ -38,6 +39,7 @@
 }
 
 -(void)updateApiURL:(NSString *)api_url {
+    NSLog(@"setting api url to %@", api_url);
     self.api_url = api_url;
 }
 
@@ -46,6 +48,7 @@
 }
 
 -(void)getRequest:(NSString *)uri {
+    NSLog(@"getRequest %@ %@", self.api_url, self.api_key);
     NSString *timer_url = [NSString stringWithFormat:@"%@%@", self.api_url, uri];
     NSURLRequest *request = [NSURLRequest requestWithURL:
                              [NSURL URLWithString:timer_url]];
@@ -62,27 +65,40 @@
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
+    NSLog(@"receiveResponse %@ %@", self.api_url, self.api_key);
+
     self.responseData = [[NSMutableData alloc] init];
     [self.responseData setLength:0];
     self.responseCode = response.statusCode;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"receiveData %@ %@", self.api_url, self.api_key);
+
     [self.responseData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"failwitherror %@ %@", self.api_url, self.api_key);
+
     NSLog(@"Connection failed: %@", [error description]);
     [self.callback_object timerLoadingFailed:error.localizedDescription];
     NSLog(@"called");
 }
 
 - (void)loadTimer {
-    UBZTimerLoading *loader = [[UBZTimerLoading alloc] initWithCallbackObject:self.callback_object withApiURL:self.api_url withApiKey:self.api_key];
+    NSLog(@"loadTimer!");
+    NSLog(@"%@ %@", self.api_url, self.api_key);
+    UBZTimerLoading *loader = [[UBZTimerLoading alloc] initWithCallbackObject:self.callback_object
+                                                                   withApiURL:self.api_url
+                                                                   withApiKey:self.api_key];
     [loader start];
 }
 - (void)stopTimer {
-    UBZTimerStopping *stopper = [[UBZTimerStopping alloc] initWithCallbackObject:self.callback_object withApiURL:self.api_url withApiKey:self.api_key];
+    NSLog(@"%@ %@", self.api_url, self.api_key);
+    UBZTimerStopping *stopper = [[UBZTimerStopping alloc] initWithCallbackObject:self.callback_object
+                                                                      withApiURL:self.api_url
+                                                                      withApiKey:self.api_key];
     [stopper start];
 }
 

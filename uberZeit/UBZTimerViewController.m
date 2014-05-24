@@ -42,7 +42,7 @@
     [self handlePreferences];
     
     self.uberzeit_api = [[UBZUberZeitAPI alloc] initWithCallbackObject:self withApiURL:self.api_url withApiKey:self.api_key];
-    [self loadCurrentTimer];
+    //[self loadCurrentTimer];
     
     [NSTimer scheduledTimerWithTimeInterval:60.0
                                      target:self
@@ -120,6 +120,7 @@
     self.api_url = [self.keychain keyForIdentifier:@"api_url"];
     self.api_key = [self.keychain keyForIdentifier:@"api_key"];
     
+    NSLog(@"controller: setting api_url to %@", self.api_url);
     [self.uberzeit_api updateApiURL:self.api_url];
     [self.uberzeit_api updateApiKey:self.api_key];
 }
@@ -160,6 +161,7 @@
 - (void)applicationWillEnterForeground:(NSNotification *)notification {
     [self reloadPreferences];
     [self handlePreferences];
+    [self loadCurrentTimer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
