@@ -40,10 +40,9 @@
     
     [self reloadPreferences];
     [self handlePreferences];
-    [self loadCurrentTimer];
     
-    self.uberzeit_api = [[UBZUberZeitAPI alloc] initWithCallbackObject:self];
-
+    self.uberzeit_api = [[UBZUberZeitAPI alloc] initWithCallbackObject:self withApiURL:self.api_url withApiKey:self.api_key];
+    [self loadCurrentTimer];
     
     [NSTimer scheduledTimerWithTimeInterval:60.0
                                      target:self
@@ -64,7 +63,7 @@
         return;
     }
     
-    [self.uberzeit_api loadCurrentTimer];
+    [self.uberzeit_api loadTimer];
 }
 
 - (void)timerLoadingFailed:(NSString *)error {
@@ -75,46 +74,30 @@
 - (void)timerLoadingCompleted:(UBZTimer *)timer {
     self.timer = timer;
     [self handleTimerUpdate];
-    
 }
+
+
+- (void)timerStoppingFailed:(NSString *)error {
+    [self presentErrorText:error];
+    self.startStopButton.hidden = true;
+}
+
+- (void)timerStoppingCompleted:(UBZTimer *)timer {
+    self.timer = timer;
+    [self handleTimerUpdate];
+}
+
 
 - (IBAction)startStopButtonPressed {
     if(self.timer.running) {
         NSLog(@"Stopping timer");
-        [self stopTimer];
+        [self.uberzeit_api stopTimer];
     } else {
         NSLog(@"Starting timer");
     }
 }
 
-- (void)stopTimer {
-    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", self.api_url];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-                                    [NSURL URLWithString:timer_url]];
-    
-    [request setValue:self.api_key forHTTPHeaderField:@"X-Auth-Token"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
-    // Specify that it will be a POST request
-    request.HTTPMethod = @"PUT";
-    
-    // Convert your data and set your request's HTTPBody property
-    NSMutableDictionary *timerDictionary = [NSMutableDictionary dictionaryWithCapacity:1];
-    [timerDictionary setObject:@"now" forKey:@"end"];
-    
-    NSError *jsonSerializationError = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:timerDictionary options:NSJSONWritingPrettyPrinted error:&jsonSerializationError];
-    
-    if(jsonSerializationError) {
-        NSLog(@"JSON Encoding Failed: %@", [jsonSerializationError localizedDescription]);
-    }
-    
-    [request setHTTPBody: jsonData];
-    
-    // Create url connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-}
 
 - (void)handleTimerUpdate {
     if(self.timer.running) {
@@ -125,8 +108,9 @@
         [self updateDuration];
     }
 }
+
 - (void)updateDuration {
-    //[self presentErrorText:self.timer.duration asError:NO];
+    [self presentText:self.timer.duration];
 }
 
 - (void)reloadPreferences {
@@ -153,8 +137,13 @@
 }
 
 - (void)presentErrorText:(NSString *)text {
-    self.topText.numberOfLines = 0;
+    [self presentText:text];
     self.topText.textColor = [UIColor redColor];
+}
+
+- (void)presentText:(NSString *)text {
+    self.topText.numberOfLines = 0;
+    self.topText.textColor = [UIColor blackColor];
     self.topText.text = text;
     self.topText.hidden = false;
 }

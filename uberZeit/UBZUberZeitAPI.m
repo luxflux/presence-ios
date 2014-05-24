@@ -10,11 +10,29 @@
 #import "UBZTimer.h"
 #import "UBZTimerViewController.h"
 
+
+@interface UBZTimerLoading : UBZUberZeitAPI
+
+-(void)start;
+
+@end
+
+
+@interface UBZTimerStopping : UBZUberZeitAPI
+
+-(void)start;
+
+@end
+
+
 @implementation UBZUberZeitAPI
 
--(id)initWithCallbackObject:(UBZTimerViewController *)callback_object {
+-(id)initWithCallbackObject:(id)callback_object withApiURL:(NSString *)api_url withApiKey:(NSString *)api_key {
     self = [super init];
     self.callback_object = callback_object;
+    
+    [self updateApiURL:api_url];
+    [self updateApiKey:api_key];
     
     return self;
 }
@@ -27,8 +45,8 @@
     self.api_key = api_key;
 }
 
--(void)loadCurrentTimer {
-    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", self.api_url];
+-(void)getRequest:(NSString *)uri {
+    NSString *timer_url = [NSString stringWithFormat:@"%@%@", self.api_url, uri];
     NSURLRequest *request = [NSURLRequest requestWithURL:
                              [NSURL URLWithString:timer_url]];
     
@@ -41,6 +59,7 @@
     
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
     self.responseData = [[NSMutableData alloc] init];
@@ -55,6 +74,27 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"Connection failed: %@", [error description]);
     [self.callback_object timerLoadingFailed:error.localizedDescription];
+    NSLog(@"called");
+}
+
+- (void)loadTimer {
+    UBZTimerLoading *loader = [[UBZTimerLoading alloc] initWithCallbackObject:self.callback_object withApiURL:self.api_url withApiKey:self.api_key];
+    [loader start];
+}
+- (void)stopTimer {
+    UBZTimerStopping *stopper = [[UBZTimerStopping alloc] initWithCallbackObject:self.callback_object withApiURL:self.api_url withApiKey:self.api_key];
+    [stopper start];
+}
+
+@end
+
+
+
+
+@implementation UBZTimerLoading
+
+-(void)start {
+    [self getRequest:@"/api/timer"];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -120,6 +160,38 @@
     }
 }
 
-
-
 @end
+
+@implementation UBZTimerStopping
+
+- (void)start {
+    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", self.api_url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:timer_url]];
+    
+    [request setValue:self.api_key forHTTPHeaderField:@"X-Auth-Token"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    // Specify that it will be a POST request
+    request.HTTPMethod = @"PUT";
+    
+    // Convert your data and set your request's HTTPBody property
+    NSMutableDictionary *timerDictionary = [NSMutableDictionary dictionaryWithCapacity:1];
+    [timerDictionary setObject:@"now" forKey:@"end"];
+    
+    NSError *jsonSerializationError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:timerDictionary options:NSJSONWritingPrettyPrinted error:&jsonSerializationError];
+    
+    if(jsonSerializationError) {
+        NSLog(@"JSON Encoding Failed: %@", [jsonSerializationError localizedDescription]);
+    }
+    
+    [request setHTTPBody: jsonData];
+    
+    // Create url connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    //[self.callback_object timerStoppingCompleted:timer];
+}
+@end
+

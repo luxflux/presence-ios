@@ -13,7 +13,11 @@
 @interface UBZTimerViewController : UIViewController
 
 - (IBAction)startStopButtonPressed;
+
 - (void)timerLoadingFailed:(NSString *)error;
 - (void)timerLoadingCompleted:(UBZTimer *)timer;
+
+- (void)timerStoppingFailed:(NSString *)error;
+- (void)timerStoppingCompleted:(UBZTimer *)timer;
 
 @end

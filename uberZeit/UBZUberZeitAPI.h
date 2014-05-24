@@ -14,15 +14,16 @@
 @property (nonatomic, weak) NSString *api_url;
 @property (nonatomic, weak) NSString *api_key;
 
-@property (nonatomic, strong) UBZTimerViewController *callback_object;
+@property (nonatomic, strong) id callback_object;
 
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic) NSInteger responseCode;
 
--(id)initWithCallbackObject:(UBZTimerViewController *)callback_object;
+-(id)initWithCallbackObject:(id)callback_object withApiURL:(NSString *)api_url withApiKey:(NSString *)api_key;
 -(void)updateApiURL:(NSString *)api_url;
 -(void)updateApiKey:(NSString *)api_key;
 
--(void)loadCurrentTimer;
+-(void)loadTimer;
+-(void)stopTimer;
 
 @end
