@@ -11,8 +11,8 @@
 
 @interface UBZUberZeitAPI : NSObject
 
-@property (nonatomic, weak) NSString *api_url;
-@property (nonatomic, weak) NSString *api_key;
+@property (nonatomic, strong) NSString *api_url;
+@property (nonatomic, strong) NSString *api_key;
 
 @property (nonatomic, strong) id callback_object;
 

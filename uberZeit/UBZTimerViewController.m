@@ -15,11 +15,11 @@
 @interface UBZTimerViewController ()
 @property (nonatomic) UBZTimer *timer;
 
-@property (nonatomic, weak) IBOutlet UILabel *topText;
-@property (nonatomic, weak) IBOutlet UIButton *startStopButton;
+@property (nonatomic, strong) IBOutlet UILabel *topText;
+@property (nonatomic, strong) IBOutlet UIButton *startStopButton;
 
-@property (nonatomic, weak) NSString *api_url;
-@property (nonatomic, weak) NSString *api_key;
+@property (nonatomic, strong) NSString *api_url;
+@property (nonatomic, strong) NSString *api_key;
 @property (nonatomic, weak) UYLPasswordManager *keychain;
 @property (nonatomic, strong) UBZUberZeitAPI *uberzeit_api;
 
