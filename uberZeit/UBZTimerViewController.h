@@ -17,6 +17,7 @@
 @property (nonatomic) UBZTimer *timer;
 
 @property (nonatomic, strong) IBOutlet UILabel *topText;
+@property (nonatomic, strong) IBOutlet UILabel *durationLabel;
 @property (nonatomic, strong) IBOutlet UIButton *startStopButton;
 
 @property (nonatomic, strong) NSString *api_url;

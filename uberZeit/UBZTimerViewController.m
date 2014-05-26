@@ -66,6 +66,12 @@
 }
 
 - (void)timerStoppingCompleted:(UBZTimer *)timer {
+    [self presentSuccessText:@"Timer stopped successfully!"];
+   // SEL loadCurrentTimerSelector = sel_registerName("loadCurrentTimer");
+
+    [self performSelector:@selector(loadCurrentTimer) withObject:NULL afterDelay:3.0];
+    [self performSelector:@selector(resetText) withObject:NULL afterDelay:3.0];
+
     self.timer = timer;
     [self handleTimerUpdate];
 }
@@ -95,7 +101,7 @@
 }
 
 - (void)updateDuration {
-    [self presentText:self.timer.duration];
+    self.durationLabel.text = self.timer.duration;
 }
 
 - (void)reloadPreferences {
@@ -125,12 +131,19 @@
     [self presentText:text];
     self.topText.textColor = [UIColor redColor];
 }
+- (void)presentSuccessText:(NSString *)text {
+    [self presentText:text];
+    self.topText.textColor = [UIColor greenColor];
+}
 
 - (void)presentText:(NSString *)text {
     self.topText.numberOfLines = 0;
     self.topText.textColor = [UIColor blackColor];
     self.topText.text = text;
     self.topText.hidden = false;
+}
+- (void)resetText {
+    self.topText.hidden = true;
 }
 
 

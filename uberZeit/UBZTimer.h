@@ -16,5 +16,8 @@
 @property (nonatomic, strong) NSString* duration;
 @property (nonatomic) BOOL running;
 
+- (UBZTimer *)initWithJSON:(NSData *)json_data;
+- (UBZTimer *)initStoppedTimer;
+
 @end
 

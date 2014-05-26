@@ -46,18 +46,39 @@
 }
 
 -(void)getRequest:(NSString *)uri {
-    NSString *timer_url = [NSString stringWithFormat:@"%@%@", self.api_url, uri];
-    NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:timer_url]];
+    NSMutableURLRequest *request = [self prepareRequest:uri];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+
+- (void)putRequest:(NSString *)uri withDictionary:(NSMutableDictionary *)dictionary {
+    NSMutableURLRequest *request = [self prepareRequest:uri];
     
-    // Create a mutable copy of the immutable request and add more headers
-    NSMutableURLRequest *mutableRequest = [request mutableCopy];
-    [mutableRequest setValue:self.api_key forHTTPHeaderField:@"X-Auth-Token"];
+    request.HTTPMethod = @"PUT";
     
-    // Now set our request variable with an (immutable) copy of the altered request
-    request = [mutableRequest copy];
+    NSData *jsonData = [self jsonSerializeDictionary:dictionary];
+    [request setHTTPBody: jsonData];
     
     [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+-(NSMutableURLRequest *)prepareRequest:(NSString *)uri {
+    NSString *timer_url = [NSString stringWithFormat:@"%@%@", self.api_url, uri];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:timer_url]];
+    
+    [request setValue:self.api_key forHTTPHeaderField:@"X-Auth-Token"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    return request;
+}
+
+- (NSData *)jsonSerializeDictionary:(NSMutableDictionary *)dictionary {
+    
+    NSError *jsonSerializationError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:&jsonSerializationError];
+    
+    return jsonData;
 }
 
 
@@ -89,6 +110,9 @@
     [stopper start];
 }
 
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"Request succeeded! Received %d bytes of data, Response Code %i",[self.responseData length], self.responseCode);
+}
 @end
 
 
@@ -101,30 +125,12 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Request succeeded! Received %d bytes of data",[self.responseData length]);
+    [super connectionDidFinishLoading:connection];
+    
     switch(self.responseCode) {
         case 200: { // Timer running
             
-            // convert to JSON
-            NSError *myError = nil;
-            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-            
-            NSDateFormatter *uberZeitDateFormatter = [[NSDateFormatter alloc] init];
-            [uberZeitDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-            
-            NSString *start = [NSString stringWithFormat:@"%@ %@", [res objectForKey:@"date"], [res objectForKey:@"start"]];
-            
-            UBZTimer *timer = [[UBZTimer alloc] init];
-            timer.time_type_id = [res objectForKey:@"time_type_id"];
-            timer.start = [uberZeitDateFormatter dateFromString:start];
-            timer.end = [res objectForKey:@"end"];
-            timer.duration = [res objectForKey:@"duration"];
-            
-            if([timer.end isKindOfClass:[NSNull class]]) {
-                timer.running = YES;
-            } else {
-                timer.running = NO;
-            }
+            UBZTimer *timer = [[UBZTimer alloc] initWithJSON:self.responseData];
             
             [self.callback_object timerLoadingCompleted:timer];
             
@@ -135,10 +141,8 @@
             break;
         }
         case 404: { // No Timer running
-            UBZTimer *timer = [[UBZTimer alloc] init];
             
-            timer.duration = @"00:00";
-            timer.running = NO;
+            UBZTimer *timer = [[UBZTimer alloc] initStoppedTimer];
             
             [self.callback_object timerLoadingCompleted:timer];
             
@@ -166,35 +170,52 @@
 @end
 
 @implementation UBZTimerStopping
-
 - (void)start {
-    NSString *timer_url = [NSString stringWithFormat:@"%@/api/timer", self.api_url];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-                                    [NSURL URLWithString:timer_url]];
-    
-    [request setValue:self.api_key forHTTPHeaderField:@"X-Auth-Token"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    // Specify that it will be a POST request
-    request.HTTPMethod = @"PUT";
-    
-    // Convert your data and set your request's HTTPBody property
     NSMutableDictionary *timerDictionary = [NSMutableDictionary dictionaryWithCapacity:1];
     [timerDictionary setObject:@"now" forKey:@"end"];
     
-    NSError *jsonSerializationError = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:timerDictionary options:NSJSONWritingPrettyPrinted error:&jsonSerializationError];
+    [self putRequest:@"/api/timer" withDictionary:timerDictionary];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    [super connectionDidFinishLoading:connection];
     
-    if(jsonSerializationError) {
-        NSLog(@"JSON Encoding Failed: %@", [jsonSerializationError localizedDescription]);
+    switch(self.responseCode) {
+        case 200: { // Timer running
+            UBZTimer *timer = [[UBZTimer alloc] initWithJSON:self.responseData];
+            [self.callback_object timerStoppingCompleted:timer];
+            
+            break;
+        }
+        case 401: { // API Token wrong?
+            [self.callback_object timerStoppingFailed:@"HTTP Code 401: Auth Token wrong?"];
+            break;
+        }
+        case 404: { // No Timer running
+            
+            UBZTimer *timer = [[UBZTimer alloc] initStoppedTimer];
+            
+            [self.callback_object timerStoppingCompleted:timer];
+            
+            break;
+        }
+        case 422: { // Validation failed
+            NSError *myError = nil;
+            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+            
+            NSLog(@"%@", [res objectForKey:@"errors"]);
+            [self.callback_object timerStoppingFailed:@"HTTP Code 422: Validation failed"];
+            break;
+        }
+        case 500: { // Server failed hard
+            [self.callback_object timerStoppingFailed:@"HTTP Code 500: Server got a hiccup"];
+            NSLog(@"Server failed hard");
+            break;
+        }
+        default: {
+            NSLog(@"%d", self.responseCode);
+        }
     }
-    
-    [request setHTTPBody: jsonData];
-    
-    // Create url connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    //[self.callback_object timerStoppingCompleted:timer];
 }
 @end
 
