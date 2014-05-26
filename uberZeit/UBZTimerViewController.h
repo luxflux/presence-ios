@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "UBZTimer.h"
+#import "UBZUberZeitAPI.h"
+#import "UYLPasswordManager.h"
 
 
 @interface UBZTimerViewController : UIViewController
+
+@property (nonatomic) UBZTimer *timer;
+
+@property (nonatomic, strong) IBOutlet UILabel *topText;
+@property (nonatomic, strong) IBOutlet UIButton *startStopButton;
+
+@property (nonatomic, strong) NSString *api_url;
+@property (nonatomic, strong) NSString *api_key;
+@property (nonatomic, weak) UYLPasswordManager *keychain;
+@property (nonatomic, strong) UBZUberZeitAPI *uberzeit_api;
 
 - (IBAction)startStopButtonPressed;
 

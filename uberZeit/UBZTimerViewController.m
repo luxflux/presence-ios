@@ -7,23 +7,6 @@
 //
 
 #import "UBZTimerViewController.h"
-#import "UBZTimer.h"
-#import "UBZUberZeitAPI.h"
-#import "UYLPasswordManager.h"
-
-
-@interface UBZTimerViewController ()
-@property (nonatomic) UBZTimer *timer;
-
-@property (nonatomic, strong) IBOutlet UILabel *topText;
-@property (nonatomic, strong) IBOutlet UIButton *startStopButton;
-
-@property (nonatomic, strong) NSString *api_url;
-@property (nonatomic, strong) NSString *api_key;
-@property (nonatomic, weak) UYLPasswordManager *keychain;
-@property (nonatomic, strong) UBZUberZeitAPI *uberzeit_api;
-
-@end
 
 @implementation UBZTimerViewController
 
@@ -102,9 +85,11 @@
 - (void)handleTimerUpdate {
     if(self.timer.running) {
         NSLog(@"Timer is running");
+        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
         [self updateDuration];
     } else {
-        NSLog(@"Time is not running");
+        NSLog(@"Timer is not running");
+        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
         [self updateDuration];
     }
 }
@@ -120,7 +105,6 @@
     self.api_url = [self.keychain keyForIdentifier:@"api_url"];
     self.api_key = [self.keychain keyForIdentifier:@"api_key"];
     
-    NSLog(@"controller: setting api_url to %@", self.api_url);
     [self.uberzeit_api updateApiURL:self.api_url];
     [self.uberzeit_api updateApiKey:self.api_key];
 }

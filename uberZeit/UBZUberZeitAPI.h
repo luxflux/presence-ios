@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UBZTimerViewController.h"
 
 @interface UBZUberZeitAPI : NSObject
 

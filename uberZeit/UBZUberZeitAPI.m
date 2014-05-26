@@ -31,7 +31,6 @@
     self = [super init];
     self.callback_object = callback_object;
     
-    NSLog(@"Called with api_url %@", api_url);
     [self updateApiURL:api_url];
     [self updateApiKey:api_key];
     
@@ -39,7 +38,6 @@
 }
 
 -(void)updateApiURL:(NSString *)api_url {
-    NSLog(@"setting api url to %@", api_url);
     self.api_url = api_url;
 }
 
