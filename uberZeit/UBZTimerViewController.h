@@ -33,4 +33,7 @@
 - (void)timerStoppingFailed:(NSString *)error;
 - (void)timerStoppingCompleted:(UBZTimer *)timer;
 
+- (void)timerStartingFailed:(NSString *)error;
+- (void)timerStartingCompleted:(UBZTimer *)timer;
+
 @end

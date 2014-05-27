@@ -24,6 +24,11 @@
 
 @end
 
+@interface UBZTimerStarting : UBZUberZeitAPI
+
+-(void)start;
+
+@end
 
 @implementation UBZUberZeitAPI
 
@@ -55,6 +60,17 @@
     NSMutableURLRequest *request = [self prepareRequest:uri];
     
     request.HTTPMethod = @"PUT";
+    
+    NSData *jsonData = [self jsonSerializeDictionary:dictionary];
+    [request setHTTPBody: jsonData];
+    
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+- (void)postRequest:(NSString *)uri withDictionary:(NSMutableDictionary *)dictionary {
+    NSMutableURLRequest *request = [self prepareRequest:uri];
+    
+    request.HTTPMethod = @"POST";
     
     NSData *jsonData = [self jsonSerializeDictionary:dictionary];
     [request setHTTPBody: jsonData];
@@ -97,6 +113,10 @@
     [self.callback_object timerLoadingFailed:error.localizedDescription];
 }
 
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"Request succeeded! Received %d bytes of data, Response Code %i",[self.responseData length], self.responseCode);
+}
+
 - (void)loadTimer {
     UBZTimerLoading *loader = [[UBZTimerLoading alloc] initWithCallbackObject:self.callback_object
                                                                    withApiURL:self.api_url
@@ -109,9 +129,11 @@
                                                                       withApiKey:self.api_key];
     [stopper start];
 }
-
--(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Request succeeded! Received %d bytes of data, Response Code %i",[self.responseData length], self.responseCode);
+- (void)startTimer {
+    UBZTimerStarting *starter = [[UBZTimerStarting alloc] initWithCallbackObject:self.callback_object
+                                                                      withApiURL:self.api_url
+                                                                      withApiKey:self.api_key];
+    [starter start];
 }
 @end
 
@@ -129,6 +151,14 @@
     
     switch(self.responseCode) {
         case 200: { // Timer running
+            
+            UBZTimer *timer = [[UBZTimer alloc] initWithJSON:self.responseData];
+            
+            [self.callback_object timerLoadingCompleted:timer];
+            
+            break;
+        }
+        case 201: { // Timer running
             
             UBZTimer *timer = [[UBZTimer alloc] initWithJSON:self.responseData];
             
@@ -218,4 +248,53 @@
     }
 }
 @end
+
+@implementation UBZTimerStarting
+- (void)start {
+    NSMutableDictionary *timerDictionary = [NSMutableDictionary dictionaryWithCapacity:1];
+    [timerDictionary setObject:@"1" forKey:@"time_type_id"];
+    
+    [self postRequest:@"/api/timer" withDictionary:timerDictionary];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    [super connectionDidFinishLoading:connection];
+    
+    switch(self.responseCode) {
+        case 201: { // Timer creation completed
+            
+            UBZTimer *timer = [[UBZTimer alloc] initWithJSON:self.responseData];
+            
+            [self.callback_object timerStartingCompleted:timer];
+            
+            break;
+        }
+        case 401: { // API Token wrong?
+            [self.callback_object timerStartingFailed:@"HTTP Code 401: Auth Token wrong?"];
+            break;
+        }
+        case 404: { // Wrong API Endpoint
+            [self.callback_object timerStartingFailed:@"HTTP Code 404: API URL seems to be wrong"];
+            break;
+        }
+        case 422: { // Validation failed
+            NSError *myError = nil;
+            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+            
+            NSLog(@"%@", [res objectForKey:@"errors"]);
+            [self.callback_object timerStartingFailed:@"HTTP Code 422: Validation failed"];
+            break;
+        }
+        case 500: { // Server failed hard
+            [self.callback_object timerStartingFailed:@"HTTP Code 500: Server got a hiccup"];
+            NSLog(@"Server failed hard");
+            break;
+        }
+        default: {
+            NSLog(@"%d", self.responseCode);
+        }
+    }
+}
+@end
+
 
