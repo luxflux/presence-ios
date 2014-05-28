@@ -26,4 +26,6 @@
 -(void)stopTimer;
 -(void)startTimer;
 
+-(void)loadTimeTypes;
+
 @end

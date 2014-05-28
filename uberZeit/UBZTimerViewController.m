@@ -25,19 +25,40 @@
     [self handlePreferences];
     
     self.uberzeit_api = [[UBZUberZeitAPI alloc] initWithCallbackObject:self withApiURL:self.api_url withApiKey:self.api_key];
-    //[self loadCurrentTimer];
+    
+    [self loadTimeTypes];
     
     [NSTimer scheduledTimerWithTimeInterval:60.0
                                      target:self
                                    selector:@selector(loadCurrentTimer)
                                    userInfo:nil
                                     repeats:YES];
+    
+    self.time_types = @[@"Schaffe", @"Penne"];
+    self.time_type_ids = @[@1, @2];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.time_types.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.time_types[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSLog(@"Selected %i", row);
+    self.selected_time_type_id = self.time_type_ids[row];
 }
 
 - (void)loadCurrentTimer {
@@ -100,6 +121,15 @@
         NSLog(@"Starting timer");
         [self.uberzeit_api startTimer];
     }
+}
+
+- (void)loadTimeTypes {
+    
+    if([self.api_url length ] == 0 || [self.api_key length ] == 0) {
+        return;
+    }
+    
+    [self.uberzeit_api loadTimeTypes];
 }
 
 

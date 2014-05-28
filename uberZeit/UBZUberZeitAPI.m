@@ -17,7 +17,6 @@
 
 @end
 
-
 @interface UBZTimerStopping : UBZUberZeitAPI
 
 -(void)start;
@@ -29,6 +28,13 @@
 -(void)start;
 
 @end
+
+@interface UBZTimeTypesLoading : UBZUberZeitAPI
+
+-(void)start;
+
+@end
+
 
 @implementation UBZUberZeitAPI
 
@@ -134,6 +140,12 @@
                                                                       withApiURL:self.api_url
                                                                       withApiKey:self.api_key];
     [starter start];
+}
+- (void)loadTimeTypes {
+    UBZTimeTypesLoading *loader = [[UBZTimeTypesLoading alloc] initWithCallbackObject:self.callback_object
+                                                                      withApiURL:self.api_url
+                                                                      withApiKey:self.api_key];
+    [loader start];
 }
 @end
 
@@ -295,6 +307,50 @@
         }
     }
 }
+@end
+
+@implementation UBZTimeTypesLoading
+
+-(void)start {
+    [self getRequest:@"/api/time_types"];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    [super connectionDidFinishLoading:connection];
+    
+    
+    switch(self.responseCode) {
+        case 200: { // Timer running
+            break;
+        }
+        case 201: { // Timer running            break;
+        }
+        case 401: { // API Token wrong?
+            [self.callback_object timerLoadingFailed:@"HTTP Code 401: Auth Token wrong?"];
+            break;
+        }
+        case 404: { // No Timer running
+            break;
+        }
+        case 422: { // Validation failed
+            NSError *myError = nil;
+            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+            
+            NSLog(@"%@", [res objectForKey:@"errors"]);
+            [self.callback_object timerLoadingFailed:@"HTTP Code 422: Validation failed"];
+            break;
+        }
+        case 500: { // Server failed hard
+            [self.callback_object timerLoadingFailed:@"HTTP Code 500: Server got a hiccup"];
+            NSLog(@"Server failed hard");
+            break;
+        }
+        default: {
+            NSLog(@"%d", self.responseCode);
+        }
+    }
+}
+
 @end
 
 
