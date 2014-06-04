@@ -27,8 +27,8 @@
 @property (nonatomic, weak) UYLPasswordManager *keychain;
 @property (nonatomic, strong) UBZUberZeitAPI *uberzeit_api;
 
-@property (nonatomic, strong) NSArray *time_types;
-@property (nonatomic, strong) NSArray *time_type_ids;
+@property (nonatomic, strong) NSMutableArray *time_type_names;
+@property (nonatomic, strong) NSMutableArray *time_type_ids;
 @property (nonatomic, strong) NSNumber *selected_time_type_id;
 
 - (IBAction)startStopButtonPressed;
@@ -41,5 +41,8 @@
 
 - (void)timerStartingFailed:(NSString *)error;
 - (void)timerStartingCompleted:(UBZTimer *)timer;
+
+- (void)timeTypeLoadingFailed:(NSString *)error;
+- (void)timeTypeLoadingCompleted:(NSArray *)time_types;
 
 @end

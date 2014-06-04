@@ -321,27 +321,21 @@
     
     switch(self.responseCode) {
         case 200: { // Timer running
+            NSError *myError = nil;
+            NSArray *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+            
+            [self.callback_object timeTypeLoadingCompleted:res];
             break;
         }
-        case 201: { // Timer running            break;
-        }
         case 401: { // API Token wrong?
-            [self.callback_object timerLoadingFailed:@"HTTP Code 401: Auth Token wrong?"];
+            [self.callback_object timeTypeLoadingFailed:@"HTTP Code 401: Auth Token wrong?"];
             break;
         }
         case 404: { // No Timer running
             break;
         }
-        case 422: { // Validation failed
-            NSError *myError = nil;
-            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-            
-            NSLog(@"%@", [res objectForKey:@"errors"]);
-            [self.callback_object timerLoadingFailed:@"HTTP Code 422: Validation failed"];
-            break;
-        }
         case 500: { // Server failed hard
-            [self.callback_object timerLoadingFailed:@"HTTP Code 500: Server got a hiccup"];
+            [self.callback_object timeTypeLoadingFailed:@"HTTP Code 500: Server got a hiccup"];
             NSLog(@"Server failed hard");
             break;
         }

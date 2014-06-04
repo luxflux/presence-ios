@@ -34,8 +34,8 @@
                                    userInfo:nil
                                     repeats:YES];
     
-    self.time_types = @[@"Schaffe", @"Penne"];
-    self.time_type_ids = @[@1, @2];
+    self.time_type_names = [[NSMutableArray alloc] initWithArray:@[@"Schaffe", @"Penne"]];
+    self.time_type_ids = [[NSMutableArray alloc] initWithArray:@[@1,@2]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,11 +49,11 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.time_types.count;
+    return self.time_type_names.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.time_types[row];
+    return self.time_type_names[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
@@ -107,11 +107,31 @@
     
     [self performSelector:@selector(loadCurrentTimer) withObject:NULL afterDelay:3.0];
     [self performSelector:@selector(resetText) withObject:NULL afterDelay:3.0];
-    
+
     self.timer = timer;
     [self handleTimerUpdate];
 }
 
+
+- (void)timeTypeLoadingFailed:(NSString *)error {
+    [self presentErrorText:error];
+    self.startStopButton.hidden = true;
+}
+- (void)timeTypeLoadingCompleted:(NSArray *)time_types {
+    [self.time_type_ids removeAllObjects];
+    [self.time_type_names removeAllObjects];
+    
+    for (NSDictionary *time_type in time_types) {
+        NSLog(@"%@", time_type);
+        NSNumber *time_type_id = [time_type objectForKey:@"id"];
+        NSString *time_type_name = [time_type objectForKey:@"name"];
+        if(time_type_id && time_type_name) {
+            [self.time_type_ids addObject:time_type_id];
+            [self.time_type_names addObject:time_type_name];
+        }
+    }
+    [self.timeTypePicker reloadAllComponents];
+}
 
 - (IBAction)startStopButtonPressed {
     if(self.timer.running) {
