@@ -9,6 +9,7 @@
 #import "UBZUberZeitAPI.h"
 #import "UBZTimer.h"
 #import "UBZTimerViewController.h"
+#import "UBZsettingsViewController.h"
 
 
 @interface UBZTimerLoading : UBZUberZeitAPI

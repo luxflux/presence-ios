@@ -26,16 +26,12 @@
     
     self.uberzeit_api = [[UBZUberZeitAPI alloc] initWithCallbackObject:self withApiURL:self.api_url withApiKey:self.api_key];
     
-    [self loadTimeTypes];
     
     [NSTimer scheduledTimerWithTimeInterval:60.0
                                      target:self
                                    selector:@selector(loadCurrentTimer)
                                    userInfo:nil
                                     repeats:YES];
-    
-    self.time_type_names = [[NSMutableArray alloc] initWithArray:@[@"Schaffe", @"Penne"]];
-    self.time_type_ids = [[NSMutableArray alloc] initWithArray:@[@1,@2]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,22 +40,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.time_type_names.count;
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.time_type_names[row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"Selected %i", row);
-    self.selected_time_type_id = self.time_type_ids[row];
-}
 
 - (void)loadCurrentTimer {
     
@@ -113,25 +93,6 @@
 }
 
 
-- (void)timeTypeLoadingFailed:(NSString *)error {
-    [self presentErrorText:error];
-    self.startStopButton.hidden = true;
-}
-- (void)timeTypeLoadingCompleted:(NSArray *)time_types {
-    [self.time_type_ids removeAllObjects];
-    [self.time_type_names removeAllObjects];
-    
-    for (NSDictionary *time_type in time_types) {
-        NSLog(@"%@", time_type);
-        NSNumber *time_type_id = [time_type objectForKey:@"id"];
-        NSString *time_type_name = [time_type objectForKey:@"name"];
-        if(time_type_id && time_type_name) {
-            [self.time_type_ids addObject:time_type_id];
-            [self.time_type_names addObject:time_type_name];
-        }
-    }
-    [self.timeTypePicker reloadAllComponents];
-}
 
 - (IBAction)startStopButtonPressed {
     if(self.timer.running) {
@@ -141,15 +102,6 @@
         NSLog(@"Starting timer");
         [self.uberzeit_api startTimer];
     }
-}
-
-- (void)loadTimeTypes {
-    
-    if([self.api_url length ] == 0 || [self.api_key length ] == 0) {
-        return;
-    }
-    
-    [self.uberzeit_api loadTimeTypes];
 }
 
 
