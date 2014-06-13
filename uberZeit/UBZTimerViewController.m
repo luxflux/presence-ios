@@ -33,9 +33,6 @@
                                    selector:@selector(loadCurrentTimer)
                                    userInfo:nil
                                     repeats:YES];
-    
-    self.time_type_names = [[NSMutableArray alloc] initWithArray:@[@"Schaffe", @"Penne"]];
-    self.time_type_ids = [[NSMutableArray alloc] initWithArray:@[@1,@2]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,19 +43,6 @@
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.time_type_names.count;
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.time_type_names[row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"Selected %i", row);
-    self.selected_time_type_id = self.time_type_ids[row];
 }
 
 - (void)loadCurrentTimer {
@@ -118,19 +102,14 @@
     self.startStopButton.hidden = true;
 }
 - (void)timeTypeLoadingCompleted:(NSArray *)time_types {
-    [self.time_type_ids removeAllObjects];
-    [self.time_type_names removeAllObjects];
     
     for (NSDictionary *time_type in time_types) {
-        NSLog(@"%@", time_type);
-        NSNumber *time_type_id = [time_type objectForKey:@"id"];
-        NSString *time_type_name = [time_type objectForKey:@"name"];
-        if(time_type_id && time_type_name) {
-            [self.time_type_ids addObject:time_type_id];
-            [self.time_type_names addObject:time_type_name];
+        if([[time_type valueForKey:@"is_work"] intValue] == 1) {
+            self.selected_time_type_id = [[time_type valueForKey:@"id"] intValue];
+            break;
         }
     }
-    [self.timeTypePicker reloadAllComponents];
+    NSLog(@"No time type of work found");
 }
 
 - (IBAction)startStopButtonPressed {

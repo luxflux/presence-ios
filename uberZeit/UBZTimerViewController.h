@@ -13,23 +13,19 @@
 
 
 @interface UBZTimerViewController : UIViewController
-                                    <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic) UBZTimer *timer;
 
 @property (nonatomic, strong) IBOutlet UILabel *topText;
 @property (nonatomic, strong) IBOutlet UILabel *durationLabel;
 @property (nonatomic, strong) IBOutlet UIButton *startStopButton;
-@property (nonatomic, strong) IBOutlet UIPickerView *timeTypePicker;
 
 @property (nonatomic, strong) NSString *api_url;
 @property (nonatomic, strong) NSString *api_key;
 @property (nonatomic, weak) UYLPasswordManager *keychain;
 @property (nonatomic, strong) UBZUberZeitAPI *uberzeit_api;
 
-@property (nonatomic, strong) NSMutableArray *time_type_names;
-@property (nonatomic, strong) NSMutableArray *time_type_ids;
-@property (nonatomic, strong) NSNumber *selected_time_type_id;
+@property (nonatomic) int selected_time_type_id;
 
 - (IBAction)startStopButtonPressed;
 
