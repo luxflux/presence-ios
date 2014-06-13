@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="14" highlighted="YES" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="QsS-gE-AvZ">
-                                <rect key="frame" x="20" y="71" width="280" height="33"/>
+                                <rect key="frame" x="20" y="71" width="280" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="hVL-HV-kxs"/>
+                                    <constraint firstAttribute="height" constant="75" id="hVL-HV-kxs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="29"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGe-Cp-FIQ">
-                                <rect key="frame" x="16" y="155" width="288" height="50"/>
+                                <rect key="frame" x="16" y="215" width="288" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="SZZ-7u-Uu8"/>
@@ -50,14 +50,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QsS-gE-AvZ" firstAttribute="top" secondItem="71M-Xg-ub5" secondAttribute="bottom" constant="7" id="2tK-Bz-DIO"/>
                             <constraint firstItem="QsS-gE-AvZ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="AEa-lW-DlT"/>
                             <constraint firstItem="dS5-iE-Ndz" firstAttribute="top" secondItem="2e6-6p-g81" secondAttribute="bottom" constant="20" id="EM2-L9-ju5"/>
                             <constraint firstItem="2e6-6p-g81" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="FRd-AV-qzL"/>
-                            <constraint firstItem="LGe-Cp-FIQ" firstAttribute="top" secondItem="QsS-gE-AvZ" secondAttribute="bottom" constant="51" id="JJf-D6-u8R"/>
+                            <constraint firstItem="LGe-Cp-FIQ" firstAttribute="top" secondItem="QsS-gE-AvZ" secondAttribute="bottom" constant="69" id="JJf-D6-u8R"/>
                             <constraint firstItem="QsS-gE-AvZ" firstAttribute="width" secondItem="LGe-Cp-FIQ" secondAttribute="width" constant="-8" id="LQf-IV-blv"/>
+                            <constraint firstAttribute="centerY" secondItem="LGe-Cp-FIQ" secondAttribute="centerY" id="NUP-27-YtW"/>
                             <constraint firstAttribute="trailing" secondItem="2e6-6p-g81" secondAttribute="trailing" constant="85" id="ZYC-0d-6pT"/>
                             <constraint firstAttribute="trailing" secondItem="QsS-gE-AvZ" secondAttribute="trailing" constant="20" id="ms6-Jh-Ua5"/>
+                            <constraint firstAttribute="centerX" secondItem="LGe-Cp-FIQ" secondAttribute="centerX" id="vbT-lg-4OH"/>
                             <constraint firstItem="LGe-Cp-FIQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="xJC-Xx-UM9"/>
                         </constraints>
                     </view>
