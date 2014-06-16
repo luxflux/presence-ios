@@ -103,6 +103,13 @@
     return jsonData;
 }
 
+- (NSString *)errorMessageFromResponseData {
+    NSError *myError = nil;
+    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+    NSString *message = [[[[res objectForKey:@"errors"] allValues] objectAtIndex:0] objectAtIndex:0];
+    return message;
+}
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
     self.responseData = [[NSMutableData alloc] init];
@@ -191,11 +198,8 @@
             break;
         }
         case 422: { // Validation failed
-            NSError *myError = nil;
-            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-            
-            NSLog(@"%@", [res objectForKey:@"errors"]);
-            [self.callback_object timerLoadingFailed:@"HTTP Code 422: Validation failed"];
+            NSString *message = [self errorMessageFromResponseData];
+            [self.callback_object timerLoadingFailed:message];
             break;
         }
         case 500: { // Server failed hard
@@ -242,11 +246,8 @@
             break;
         }
         case 422: { // Validation failed
-            NSError *myError = nil;
-            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-            
-            NSLog(@"%@", [res objectForKey:@"errors"]);
-            [self.callback_object timerStoppingFailed:@"HTTP Code 422: Validation failed"];
+            NSString *message = [self errorMessageFromResponseData];
+            [self.callback_object timerStoppingFailed:message];
             break;
         }
         case 500: { // Server failed hard
@@ -290,11 +291,8 @@
             break;
         }
         case 422: { // Validation failed
-            NSError *myError = nil;
-            NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
-            
-            NSLog(@"%@", [res objectForKey:@"errors"]);
-            [self.callback_object timerStartingFailed:@"HTTP Code 422: Validation failed"];
+            NSString *message = [self errorMessageFromResponseData];
+            [self.callback_object timerStartingFailed:message];
             break;
         }
         case 500: { // Server failed hard

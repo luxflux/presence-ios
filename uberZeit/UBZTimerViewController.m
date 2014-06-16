@@ -62,6 +62,7 @@
 - (void)timerLoadingCompleted:(UBZTimer *)timer {
     self.timer = timer;
     [self handleTimerUpdate];
+    self.startStopButton.hidden = false;
 }
 
 
@@ -71,10 +72,7 @@
 }
 
 - (void)timerStoppingCompleted:(UBZTimer *)timer {
-    [self presentSuccessText:@"Timer stopped successfully!"];
-
     [self performSelector:@selector(loadCurrentTimer) withObject:NULL afterDelay:3.0];
-    [self performSelector:@selector(resetText) withObject:NULL afterDelay:3.0];
 
     self.timer = timer;
     [self handleTimerUpdate];
@@ -84,11 +82,10 @@
 - (void)timerStartingFailed:(NSString *)error {
     [self presentErrorText:error];
     self.startStopButton.hidden = true;
+    [self loadCurrentTimer];
 }
 
 - (void)timerStartingCompleted:(UBZTimer *)timer {
-    [self presentSuccessText:@"Timer started successfully!"];
-    
     [self performSelector:@selector(loadCurrentTimer) withObject:NULL afterDelay:3.0];
     [self performSelector:@selector(resetText) withObject:NULL afterDelay:3.0];
 
@@ -146,7 +143,11 @@
 }
 
 - (void)updateDuration {
-    self.durationLabel.text = self.timer.duration;
+    if(self.timer.running) {
+        self.durationLabel.text = self.timer.duration;
+    } else {
+        self.durationLabel.text = @"--:--";
+    }
 }
 
 - (void)reloadPreferences {
@@ -187,6 +188,8 @@
     self.topText.textColor = [UIColor blackColor];
     self.topText.text = text;
     self.topText.hidden = false;
+    
+    [self performSelector:@selector(resetText) withObject:NULL afterDelay:3.0];
 }
 
 - (void)resetText {
