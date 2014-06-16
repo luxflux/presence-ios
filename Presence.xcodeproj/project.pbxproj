@@ -48,11 +48,11 @@
 		054ECEFC192A4A9000548992 /* UBZTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBZTimer.m; sourceTree = "<group>"; };
 		05575FDC192C85500041D19A /* UBZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UBZSettingsViewController.h; sourceTree = "<group>"; };
 		05575FDD192C85500041D19A /* UBZSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UBZSettingsViewController.m; sourceTree = "<group>"; };
-		05DE1F95192A05EC0064E08D /* uberZeit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberZeit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05DE1F95192A05EC0064E08D /* Presence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DE1F98192A05EC0064E08D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		05DE1F9A192A05EC0064E08D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		05DE1F9C192A05EC0064E08D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		05DE1FA0192A05EC0064E08D /* uberZeit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "uberZeit-Info.plist"; sourceTree = "<group>"; };
+		05DE1FA0192A05EC0064E08D /* Presence-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Presence-Info.plist"; sourceTree = "<group>"; };
 		05DE1FA2192A05EC0064E08D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05DE1FA4192A05EC0064E08D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		05DE1FA6192A05EC0064E08D /* uberZeit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uberZeit-Prefix.pch"; sourceTree = "<group>"; };
@@ -62,9 +62,9 @@
 		05DE1FAD192A05EC0064E08D /* UBZTimerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UBZTimerViewController.h; sourceTree = "<group>"; };
 		05DE1FAE192A05EC0064E08D /* UBZTimerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UBZTimerViewController.m; sourceTree = "<group>"; };
 		05DE1FB0192A05EC0064E08D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		05DE1FB6192A05EC0064E08D /* uberZeitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uberZeitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		05DE1FB6192A05EC0064E08D /* PresenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DE1FB7192A05EC0064E08D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		05DE1FBF192A05EC0064E08D /* uberZeitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "uberZeitTests-Info.plist"; sourceTree = "<group>"; };
+		05DE1FBF192A05EC0064E08D /* PresenceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PresenceTests-Info.plist"; sourceTree = "<group>"; };
 		05DE1FC1192A05EC0064E08D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05DE1FC3192A05EC0064E08D /* uberZeitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uberZeitTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,8 +107,8 @@
 		05DE1F96192A05EC0064E08D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				05DE1F95192A05EC0064E08D /* uberZeit.app */,
-				05DE1FB6192A05EC0064E08D /* uberZeitTests.xctest */,
+				05DE1F95192A05EC0064E08D /* Presence.app */,
+				05DE1FB6192A05EC0064E08D /* PresenceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 		05DE1F9F192A05EC0064E08D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				05DE1FA0192A05EC0064E08D /* uberZeit-Info.plist */,
+				05DE1FA0192A05EC0064E08D /* Presence-Info.plist */,
 				05DE1FA1192A05EC0064E08D /* InfoPlist.strings */,
 				05DE1FA4192A05EC0064E08D /* main.m */,
 				05DE1FA6192A05EC0064E08D /* uberZeit-Prefix.pch */,
@@ -170,7 +170,7 @@
 		05DE1FBE192A05EC0064E08D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				05DE1FBF192A05EC0064E08D /* uberZeitTests-Info.plist */,
+				05DE1FBF192A05EC0064E08D /* PresenceTests-Info.plist */,
 				05DE1FC0192A05EC0064E08D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -179,9 +179,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		05DE1F94192A05EC0064E08D /* uberZeit */ = {
+		05DE1F94192A05EC0064E08D /* Presence */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05DE1FC7192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeit" */;
+			buildConfigurationList = 05DE1FC7192A05EC0064E08D /* Build configuration list for PBXNativeTarget "Presence" */;
 			buildPhases = (
 				05DE1F91192A05EC0064E08D /* Sources */,
 				05DE1F92192A05EC0064E08D /* Frameworks */,
@@ -191,14 +191,14 @@
 			);
 			dependencies = (
 			);
-			name = uberZeit;
+			name = Presence;
 			productName = uberZeit;
-			productReference = 05DE1F95192A05EC0064E08D /* uberZeit.app */;
+			productReference = 05DE1F95192A05EC0064E08D /* Presence.app */;
 			productType = "com.apple.product-type.application";
 		};
-		05DE1FB5192A05EC0064E08D /* uberZeitTests */ = {
+		05DE1FB5192A05EC0064E08D /* PresenceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05DE1FCA192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeitTests" */;
+			buildConfigurationList = 05DE1FCA192A05EC0064E08D /* Build configuration list for PBXNativeTarget "PresenceTests" */;
 			buildPhases = (
 				05DE1FB2192A05EC0064E08D /* Sources */,
 				05DE1FB3192A05EC0064E08D /* Frameworks */,
@@ -209,9 +209,9 @@
 			dependencies = (
 				05DE1FBC192A05EC0064E08D /* PBXTargetDependency */,
 			);
-			name = uberZeitTests;
+			name = PresenceTests;
 			productName = uberZeitTests;
-			productReference = 05DE1FB6192A05EC0064E08D /* uberZeitTests.xctest */;
+			productReference = 05DE1FB6192A05EC0064E08D /* PresenceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -228,7 +228,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "uberZeit" */;
+			buildConfigurationList = 05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "Presence" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -241,8 +241,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				05DE1F94192A05EC0064E08D /* uberZeit */,
-				05DE1FB5192A05EC0064E08D /* uberZeitTests */,
+				05DE1F94192A05EC0064E08D /* Presence */,
+				05DE1FB5192A05EC0064E08D /* PresenceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -296,7 +296,7 @@
 /* Begin PBXTargetDependency section */
 		05DE1FBC192A05EC0064E08D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 05DE1F94192A05EC0064E08D /* uberZeit */;
+			target = 05DE1F94192A05EC0064E08D /* Presence */;
 			targetProxy = 05DE1FBB192A05EC0064E08D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -405,9 +405,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "uberZeit/uberZeit-Prefix.pch";
-				INFOPLIST_FILE = "uberZeit/uberZeit-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "uberZeit/Presence-Prefix.pch";
+				INFOPLIST_FILE = "uberZeit/Presence-Info.plist";
+				PRODUCT_NAME = Presence;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -418,9 +418,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "uberZeit/uberZeit-Prefix.pch";
-				INFOPLIST_FILE = "uberZeit/uberZeit-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "uberZeit/Presence-Prefix.pch";
+				INFOPLIST_FILE = "uberZeit/Presence-Info.plist";
+				PRODUCT_NAME = Presence;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -440,8 +440,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "uberZeitTests/uberZeitTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "uberZeitTests/PresenceTests-Info.plist";
+				PRODUCT_NAME = PresenceTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -458,8 +458,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "uberZeit/uberZeit-Prefix.pch";
-				INFOPLIST_FILE = "uberZeitTests/uberZeitTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "uberZeitTests/PresenceTests-Info.plist";
+				PRODUCT_NAME = PresenceTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -468,7 +468,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "uberZeit" */ = {
+		05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "Presence" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05DE1FC5192A05EC0064E08D /* Debug */,
@@ -477,7 +477,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		05DE1FC7192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeit" */ = {
+		05DE1FC7192A05EC0064E08D /* Build configuration list for PBXNativeTarget "Presence" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05DE1FC8192A05EC0064E08D /* Debug */,
@@ -486,7 +486,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		05DE1FCA192A05EC0064E08D /* Build configuration list for PBXNativeTarget "uberZeitTests" */ = {
+		05DE1FCA192A05EC0064E08D /* Build configuration list for PBXNativeTarget "PresenceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05DE1FCB192A05EC0064E08D /* Debug */,

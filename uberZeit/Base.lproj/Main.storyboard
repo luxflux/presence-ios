@@ -89,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="API" footerTitle="Set the preferences to access uberZeit" id="hTE-Ss-eq4">
+                            <tableViewSection headerTitle="API" footerTitle="Set the preferences to access Presence" id="hTE-Ss-eq4">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="CA9-FC-G0A" style="IBUITableViewCellStyleDefault" id="2U9-cE-EdE">
                                         <rect key="frame" x="0.0" y="119" width="320" height="44"/>

@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "05DE1F94192A05EC0064E08D"
                BuildableName = "uberZeit.app"
-               BlueprintName = "uberZeit"
-               ReferencedContainer = "container:uberZeit.xcodeproj">
+               BlueprintName = "Presence"
+               ReferencedContainer = "container:Presence.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "05DE1FB5192A05EC0064E08D"
                BuildableName = "uberZeitTests.xctest"
-               BlueprintName = "uberZeitTests"
-               ReferencedContainer = "container:uberZeit.xcodeproj">
+               BlueprintName = "PresenceTests"
+               ReferencedContainer = "container:Presence.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "05DE1F94192A05EC0064E08D"
             BuildableName = "uberZeit.app"
-            BlueprintName = "uberZeit"
-            ReferencedContainer = "container:uberZeit.xcodeproj">
+            BlueprintName = "Presence"
+            ReferencedContainer = "container:Presence.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "05DE1F94192A05EC0064E08D"
             BuildableName = "uberZeit.app"
-            BlueprintName = "uberZeit"
-            ReferencedContainer = "container:uberZeit.xcodeproj">
+            BlueprintName = "Presence"
+            ReferencedContainer = "container:Presence.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "05DE1F94192A05EC0064E08D"
             BuildableName = "uberZeit.app"
-            BlueprintName = "uberZeit"
-            ReferencedContainer = "container:uberZeit.xcodeproj">
+            BlueprintName = "Presence"
+            ReferencedContainer = "container:Presence.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
