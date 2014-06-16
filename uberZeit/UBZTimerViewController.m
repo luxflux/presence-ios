@@ -63,34 +63,28 @@
     self.timer = timer;
     [self handleTimerUpdate];
     self.startStopButton.hidden = false;
+    [self resetText];
 }
 
 
 - (void)timerStoppingFailed:(NSString *)error {
-    [self presentErrorText:error];
-    self.startStopButton.hidden = true;
+    [self loadCurrentTimer];
 }
 
 - (void)timerStoppingCompleted:(UBZTimer *)timer {
-    [self performSelector:@selector(loadCurrentTimer) withObject:NULL afterDelay:3.0];
-
     self.timer = timer;
     [self handleTimerUpdate];
 }
 
 
 - (void)timerStartingFailed:(NSString *)error {
-    [self presentErrorText:error];
-    self.startStopButton.hidden = true;
     [self loadCurrentTimer];
 }
 
 - (void)timerStartingCompleted:(UBZTimer *)timer {
-    [self performSelector:@selector(loadCurrentTimer) withObject:NULL afterDelay:3.0];
-    [self performSelector:@selector(resetText) withObject:NULL afterDelay:3.0];
-
     self.timer = timer;
     [self handleTimerUpdate];
+    [self loadCurrentTimerInAfewSeconds];
 }
 
 
@@ -99,14 +93,12 @@
     self.startStopButton.hidden = true;
 }
 - (void)timeTypeLoadingCompleted:(NSArray *)time_types {
-    
     for (NSDictionary *time_type in time_types) {
         if([[time_type valueForKey:@"is_work"] intValue] == 1) {
             self.selected_time_type_id = [[time_type valueForKey:@"id"] intValue];
             break;
         }
     }
-    NSLog(@"No time type of work found");
 }
 
 - (IBAction)startStopButtonPressed {
@@ -120,7 +112,6 @@
 }
 
 - (void)loadTimeTypes {
-    
     if([self.api_url length ] == 0 || [self.api_key length ] == 0) {
         return;
     }
@@ -181,6 +172,7 @@
 - (void)presentSuccessText:(NSString *)text {
     [self presentText:text];
     self.topText.textColor = [UIColor greenColor];
+    [self resetTextInAfewSeconds];
 }
 
 - (void)presentText:(NSString *)text {
@@ -188,12 +180,18 @@
     self.topText.textColor = [UIColor blackColor];
     self.topText.text = text;
     self.topText.hidden = false;
-    
-    [self performSelector:@selector(resetText) withObject:NULL afterDelay:3.0];
 }
 
 - (void)resetText {
     self.topText.hidden = true;
+}
+
+- (void)loadCurrentTimerInAfewSeconds {
+    [self performSelector:@selector(loadCurrentTimer) withObject:NULL afterDelay:3.0];
+}
+
+- (void)resetTextInAfewSeconds {
+    [self performSelector:@selector(resetText) withObject:NULL afterDelay:3.0];
 }
 
 
