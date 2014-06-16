@@ -110,7 +110,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <accessibility key="accessibilityConfiguration" label=""/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="URL"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="ffH-FR-pnK" id="JPn-OR-7tg"/>
                                                     </connections>
@@ -141,7 +141,7 @@
                                                     <rect key="frame" x="70" y="7" width="230" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="ffH-FR-pnK" id="665-Zm-sas"/>
                                                     </connections>
