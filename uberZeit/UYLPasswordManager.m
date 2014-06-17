@@ -255,7 +255,7 @@ static UYLPasswordManager *_sharedInstance = nil;
 			return @"Unable to decode the provided data";
 			break;
 		default:
-			return [NSString stringWithFormat:@"Unknown error: %ld",status];
+			return [NSString stringWithFormat:@"Unknown error: %d",(int)status];
 			break;
 	}
 }

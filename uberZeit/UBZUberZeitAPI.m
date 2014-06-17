@@ -127,7 +127,7 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Request succeeded! Received %d bytes of data, Response Code %i",[self.responseData length], self.responseCode);
+    //NSLog(@"Request succeeded! Received %d bytes of data, Response Code %i",[self.responseData length], self.responseCode);
 }
 
 - (void)loadTimer {
@@ -208,7 +208,7 @@
             break;
         }
         default: {
-            NSLog(@"%d", self.responseCode);
+            NSLog(@"%ld", (long)self.responseCode);
         }
     }
 }
@@ -256,7 +256,7 @@
             break;
         }
         default: {
-            NSLog(@"%d", self.responseCode);
+            NSLog(@"%ld", (long)self.responseCode);
         }
     }
 }
@@ -301,7 +301,7 @@
             break;
         }
         default: {
-            NSLog(@"%d", self.responseCode);
+            NSLog(@"%ld", (long)self.responseCode);
         }
     }
 }
@@ -338,7 +338,7 @@
             break;
         }
         default: {
-            NSLog(@"%d", self.responseCode);
+            NSLog(@"%ld", (long)self.responseCode);
         }
     }
 }
