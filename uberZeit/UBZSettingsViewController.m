@@ -7,15 +7,6 @@
 //
 
 #import "UBZSettingsViewController.h"
-#import "UYLPasswordManager.h"
-
-@interface UBZSettingsViewController ()
-
-@property (nonatomic, weak) IBOutlet UITextField *apiURLField;
-@property (nonatomic, weak) IBOutlet UITextField *apiKeyField;
-@property (nonatomic, weak) UYLPasswordManager *keychain;
-
-@end
 
 @implementation UBZSettingsViewController
 
