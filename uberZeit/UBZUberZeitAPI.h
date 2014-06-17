@@ -28,4 +28,6 @@
 
 -(void)loadTimeTypes;
 
+-(void)pingAPI;
+
 @end

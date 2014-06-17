@@ -9,6 +9,7 @@
 #import "UBZUberZeitAPI.h"
 #import "UBZTimer.h"
 #import "UBZTimerViewController.h"
+#import "UBZSettingsViewController.h"
 
 
 @interface UBZTimerLoading : UBZUberZeitAPI
@@ -30,6 +31,12 @@
 @end
 
 @interface UBZTimeTypesLoading : UBZUberZeitAPI
+
+-(void)start;
+
+@end
+
+@interface UBZPingAPI : UBZUberZeitAPI
 
 -(void)start;
 
@@ -153,6 +160,12 @@
                                                                       withApiURL:self.api_url
                                                                       withApiKey:self.api_key];
     [loader start];
+}
+- (void)pingAPI {
+    UBZPingAPI *ping_api = [[UBZPingAPI alloc] initWithCallbackObject:self.callback_object
+                                                                           withApiURL:self.api_url
+                                                                           withApiKey:self.api_key];
+    [ping_api start];
 }
 @end
 
@@ -344,5 +357,42 @@
 }
 
 @end
+
+@implementation UBZPingAPI
+
+-(void)start {
+    [self getRequest:@"/api/ping"];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    [super connectionDidFinishLoading:connection];
+    
+    
+    switch(self.responseCode) {
+        case 200: { // API there
+            [self.callback_object pingApiCompleted];
+            break;
+        }
+        case 401: { // API Token wrong?
+            [self.callback_object pingApiFailed:@"HTTP Code 401: Auth Token wrong?"];
+            break;
+        }
+        case 404: { // No API there
+            [self.callback_object pingApiFailed:@"HTTP Code 404: Wrong URL specified?"];
+            break;
+        }
+        case 500: { // Server failed hard
+            [self.callback_object pingApiFailed:@"HTTP Code 500: Server got a hiccup"];
+            NSLog(@"Server failed hard");
+            break;
+        }
+        default: {
+            NSLog(@"%ld", (long)self.responseCode);
+        }
+    }
+}
+
+@end
+
 
 
