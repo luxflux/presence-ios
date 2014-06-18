@@ -223,12 +223,15 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = raffaelschmid;
 				TargetAttributes = {
+					05DE1F94192A05EC0064E08D = {
+						DevelopmentTeam = 78S98LRVY7;
+					};
 					05DE1FB5192A05EC0064E08D = {
 						TestTargetID = 05DE1F94192A05EC0064E08D;
 					};
 				};
 			};
-			buildConfigurationList = 05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "Presence" */;
+			buildConfigurationList = 05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "presence" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -409,6 +412,7 @@
 				GCC_PREFIX_HEADER = "uberZeit/Presence-Prefix.pch";
 				INFOPLIST_FILE = "uberZeit/Presence-Info.plist";
 				PRODUCT_NAME = Presence;
+				PROVISIONING_PROFILE = "86915582-A4BC-4CBD-8109-19895B70C2EF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -423,6 +427,7 @@
 				GCC_PREFIX_HEADER = "uberZeit/Presence-Prefix.pch";
 				INFOPLIST_FILE = "uberZeit/Presence-Info.plist";
 				PRODUCT_NAME = Presence;
+				PROVISIONING_PROFILE = "86915582-A4BC-4CBD-8109-19895B70C2EF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -470,7 +475,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "Presence" */ = {
+		05DE1F90192A05EC0064E08D /* Build configuration list for PBXProject "presence" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05DE1FC5192A05EC0064E08D /* Debug */,
